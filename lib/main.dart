@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyStateFull(),
     );
   }
 }
@@ -113,3 +113,40 @@ class _MyHomePageState extends State<MyHomePage> {
 
   }
 }
+
+class MyFirstWidget extends StatelessWidget {
+  int counter = 0;
+  @override
+  Widget build(BuildContext context) {
+    counter ++;
+    print(counter);
+    return Container(
+
+      child: Center(
+        child: Text('Hello'),
+
+      ),
+
+    );
+  }
+}
+
+class MyStateFull extends StatefulWidget {
+  @override
+  _MyStateFullState createState() => _MyStateFullState();
+}
+
+class _MyStateFullState extends State<MyStateFull> {
+  int counter = 0;
+  @override
+  Widget build(BuildContext context) {
+    counter ++;
+    print(counter);
+    return Container(child: Center(
+      child: Text('Hello'),
+
+    ),);
+  }
+}
+
+
