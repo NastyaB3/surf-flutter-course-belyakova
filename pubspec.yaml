@@ -40,11 +40,16 @@ flutter:
       - asset: res/fonts/Roboto-Light.ttf
       - asset: res/fonts/Roboto-Medium.ttf
       - asset: res/fonts/Roboto-Thin.ttf
+
+      - asset: res/fonts/Roboto-MediumItalic.ttf
+      - asset: res/fonts/Roboto-ThinItalic.ttf
+        weight: 700
+
+  - family: Roboto
+    fonts:
       - asset: res/fonts/Roboto-BlackItalic.ttf
       - asset: res/fonts/Roboto-Italic.ttf
       - asset: res/fonts/Roboto-Light.ttf
       - asset: res/fonts/Roboto-LightItalic.ttf
-      - asset: res/fonts/Roboto-MediumItalic.ttf
-      - asset: res/fonts/Roboto-ThinItalic.ttf
-
-
+        style: italic
+        weight: 700
