@@ -10,9 +10,8 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'StateWidget',
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
+      title: 'Places',
+      theme: new ThemeData(
       ),
       home: SightListScreen(),
     );
