@@ -3,6 +3,7 @@ import 'package:places/domain/sight.dart';
 import 'package:places/ui/res/colors.dart';
 import 'package:places/ui/res/text_style.dart';
 import 'package:places/ui/screen/sight_card.dart';
+import 'package:places/ui/screen/sight_details.dart';
 
 import '../../mocks.dart';
 
@@ -30,10 +31,22 @@ class _SightListScreenState extends State<SightListScreen> {
       ),
       body: Center(
         child: Column(
-          children: mocks.map((e) => Container(
-            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-            child: SightCard(e),
-          )).toList(),
+          children: mocks
+              .map((sight) => Container(
+                    margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                    child: GestureDetector(
+                      child: SightCard(sight),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SightDetails(sight),
+                          ),
+                        );
+                      },
+                    ),
+                  ))
+              .toList(),
         ),
       ),
     );
