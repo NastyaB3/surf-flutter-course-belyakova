@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/res/colors.dart';
 import 'package:places/ui/res/text_style.dart';
+import 'package:places/widget/icon_button_widget.dart';
 
 class SightDetails extends StatelessWidget {
   final Sight sight;
@@ -16,7 +17,6 @@ class SightDetails extends StatelessWidget {
         slivers: [
           SliverAppBar(
             expandedHeight: 360.0,
-            // backgroundColor: Colors.yellow,
             flexibleSpace: Container(
               height: 360 + kToolbarHeight,
               width: double.infinity,
@@ -76,9 +76,9 @@ class SightDetails extends StatelessWidget {
                         ),
                         child: Center(
                             child: Text(
-                          'ПОСТРОИТЬ МАРШРУТ',
-                          style: textBoldWhite.copyWith(fontSize: 14),
-                        )),
+                              'ПОСТРОИТЬ МАРШРУТ',
+                              style: textBoldWhite.copyWith(fontSize: 14),
+                            )),
                       ),
                       SizedBox(
                         height: 24,
@@ -93,14 +93,14 @@ class SightDetails extends StatelessWidget {
                       Row(
                         children: [
                           Expanded(
-                            child: _buildbtn(
+                            child: BuildButton(
                               'Запланировать',
                               Icons.calendar_today_outlined,
                               false,
                             ),
                           ),
                           Expanded(
-                            child: _buildbtn(
+                            child: BuildButton(
                               'В избранное',
                               Icons.favorite_border_outlined,
                               true,
@@ -119,22 +119,4 @@ class SightDetails extends StatelessWidget {
     );
   }
 
-  Widget _buildbtn(String title, IconData icon, bool isActive) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-      child: Row(
-        children: [
-          Icon(icon, color: isActive ? textColorTitle : lightGrey,),
-          SizedBox(
-            width: 9,
-          ),
-          Text(
-            title,
-            style: textDescription.copyWith(
-                color: isActive ? textColorTitle : lightGrey),
-          ),
-        ],
-      ),
-    );
-  }
 }
