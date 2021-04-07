@@ -23,6 +23,10 @@ class SightDetails extends StatelessWidget {
               child: Image.network(
                 sight.url,
                 fit: BoxFit.cover,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return Center(child: CupertinoActivityIndicator());
+                },
               ),
             ),
           ),
@@ -76,9 +80,9 @@ class SightDetails extends StatelessWidget {
                         ),
                         child: Center(
                             child: Text(
-                              'ПОСТРОИТЬ МАРШРУТ',
-                              style: textBoldWhite.copyWith(fontSize: 14),
-                            )),
+                          'ПОСТРОИТЬ МАРШРУТ',
+                          style: textBoldWhite.copyWith(fontSize: 14),
+                        )),
                       ),
                       SizedBox(
                         height: 24,
@@ -118,5 +122,4 @@ class SightDetails extends StatelessWidget {
       ),
     );
   }
-
 }
