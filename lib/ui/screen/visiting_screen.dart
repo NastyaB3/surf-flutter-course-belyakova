@@ -94,17 +94,16 @@ class _VisitingScreenState extends State<VisitingScreen> {
     if (mocks.isNotEmpty) {
       return Center(
         child: SingleChildScrollView(
-          child: Column(
-            children: mocks
-                .map((sight) => Container(
-                      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                      child: AspectRatio(
-                        aspectRatio: 3 / 2,
-                        child: SightCardVisiting(sight),
-                      ),
-                    ))
-                .toList(),
-          ),
+          child: Column(children: [
+            for (var sight in mocks)
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                child: AspectRatio(
+                  aspectRatio: 3 / 2,
+                  child: SightCardVisiting(sight),
+                ),
+              ),
+          ]),
         ),
       );
     } else {
@@ -138,17 +137,16 @@ class _VisitingScreenState extends State<VisitingScreen> {
     if (mocks.isNotEmpty) {
       return Center(
         child: SingleChildScrollView(
-          child: Column(
-            children: mocks
-                .map((sight) => Container(
-                      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                      child: AspectRatio(
-                        aspectRatio: 3 / 2,
-                        child: SightCardVisited(sight),
-                      ),
-                    ))
-                .toList(),
-          ),
+          child: Column(children: [
+            for (var sight in mocks)
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                child: AspectRatio(
+                  aspectRatio: 3 / 2,
+                  child: SightCardVisited(sight),
+                ),
+              ),
+          ]),
         ),
       );
     } else {

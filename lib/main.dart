@@ -7,14 +7,7 @@ import 'package:places/ui/screen/sight_list_screen.dart';
 import 'package:places/ui/screen/visiting_screen.dart';
 
 void main() {
-  runApp(App());
-}
-
-class App extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MainApp();
-  }
+  runApp(MainApp());
 }
 
 class MainApp extends StatefulWidget {
@@ -38,7 +31,7 @@ class _AppState extends State<MainApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Places',
-      theme: new ThemeData(),
+      theme: ThemeData(),
       home: Stack(
         children: [
           buildBody(),
@@ -79,26 +72,3 @@ class _AppState extends State<MainApp> {
   }
 }
 
-class MyStateFull extends StatefulWidget {
-  @override
-  _MyStateFullState createState() => _MyStateFullState();
-}
-
-class _MyStateFullState extends State<MyStateFull> {
-  int counter = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    counter++;
-    print(counter);
-    return Container(
-      child: Center(
-        child: Text('Hello'),
-      ),
-    );
-  }
-
-  testContextFull() {
-    return context.runtimeType;
-  }
-}
