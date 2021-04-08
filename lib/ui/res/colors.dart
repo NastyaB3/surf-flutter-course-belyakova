@@ -6,6 +6,7 @@ const Color  textColorPrimary = Color(0xff3b3f59),
               backColorLight = Color(0xfff5f5f5),
               textColorDescription = Color(0xff7C7E92),
               textColorTitle = Color(0xff3B3E5B),
+              textColorSubTitle = Color(0xff252849),
               lightGrey = Color(0x487C7E92);
 
 
