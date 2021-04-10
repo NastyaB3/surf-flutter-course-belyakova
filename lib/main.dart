@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:places/domain/sight.dart';
-import 'package:places/ui/res/colors.dart';
-import 'package:places/ui/screen/sight_card.dart';
-import 'package:places/ui/screen/sight_details.dart';
+
+import 'package:places/ui/screen/res/themes.dart';
+
 import 'package:places/ui/screen/sight_list_screen.dart';
 import 'package:places/ui/screen/visiting_screen.dart';
 
@@ -17,6 +16,7 @@ class MainApp extends StatefulWidget {
 
 class _AppState extends State<MainApp> {
   int currentIndex = 0;
+  bool isDarkMood = false;
 
   Widget buildBody() {
     if (currentIndex == 0) {
@@ -30,8 +30,9 @@ class _AppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Places',
-      theme: ThemeData(),
+      theme: isDarkMood ? darkTheme: lightTheme,
       home: Stack(
         children: [
           buildBody(),
@@ -43,8 +44,7 @@ class _AppState extends State<MainApp> {
                   currentIndex = index;
                 });
               },
-              unselectedItemColor: Colors.grey,
-              selectedItemColor: textColorTitle,
+              type: BottomNavigationBarType.fixed,
               currentIndex: currentIndex,
               items: [
                 BottomNavigationBarItem(

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:places/ui/res/colors.dart';
 import 'package:places/ui/res/text_style.dart';
 
@@ -17,15 +18,15 @@ class BuildButton extends StatelessWidget {
         children: [
           Icon(
             icon,
-            color: isActive ? textColorTitle : lightGrey,
+            color: isActive ? Theme.of(context).selectedRowColor : ltInactiveBlack,
           ),
           SizedBox(
             width: 9,
           ),
           Text(
             title,
-            style: textDescription.copyWith(
-                color: isActive ? textColorTitle : lightGrey),
+            style: textSmall.copyWith(
+                color: isActive ? Theme.of(context).selectedRowColor  : ltInactiveBlack),
           ),
         ],
       ),

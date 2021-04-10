@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/res/colors.dart';
-import 'package:places/ui/res/text_style.dart';
 import 'package:places/widget/icon_button_widget.dart';
 
 class SightDetails extends StatelessWidget {
@@ -40,8 +39,7 @@ class SightDetails extends StatelessWidget {
                     children: [
                       Text(
                         sight.name,
-                        style: textBold.copyWith(
-                            fontSize: 24, color: textColorTitle),
+                        style: Theme.of(context).textTheme.headline5,
                       ),
                       SizedBox(
                         height: 2,
@@ -50,15 +48,14 @@ class SightDetails extends StatelessWidget {
                         children: [
                           Text(
                             sight.type.toLowerCase(),
-                            style: textBold.copyWith(
-                                fontSize: 14, color: textColorTitle),
+                            style: Theme.of(context).textTheme.subtitle1,
                           ),
                           SizedBox(
                             width: 16,
                           ),
                           Text(
                             'закрыто до 09:00',
-                            style: textDescription,
+                            style: Theme.of(context).textTheme.bodyText2,
                           ),
                         ],
                       ),
@@ -67,7 +64,7 @@ class SightDetails extends StatelessWidget {
                       ),
                       Text(
                         sight.details,
-                        style: textDescription.copyWith(color: textColorTitle),
+                        style: Theme.of(context).textTheme.bodyText2,
                       ),
                       SizedBox(
                         height: 24,
@@ -76,12 +73,12 @@ class SightDetails extends StatelessWidget {
                         height: 48,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
-                          color: colorGreen,
+                          color: ltColorGreen,
                         ),
                         child: Center(
                             child: Text(
                           'ПОСТРОИТЬ МАРШРУТ',
-                          style: textBoldWhite.copyWith(fontSize: 14),
+                          style: Theme.of(context).textTheme.bodyText1,
                         )),
                       ),
                       SizedBox(
@@ -89,7 +86,7 @@ class SightDetails extends StatelessWidget {
                       ),
                       Container(
                         height: 0.8,
-                        color: lightGrey,
+                        color: ltInactiveBlack,
                       ),
                       SizedBox(
                         height: 8,

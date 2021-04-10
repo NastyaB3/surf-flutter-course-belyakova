@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:places/ui/res/text_style.dart';
-import 'package:places/ui/screen/sight_card.dart';
-import 'package:places/ui/screen/sight_details.dart';
 
 import '../mocks.dart';
 
@@ -17,7 +14,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: Text(
         'Список \nинтересных мест',
         maxLines: 2,
-        style: textBold,
+        style: Theme.of(context).textTheme.headline4,
       ),
     );
   }
