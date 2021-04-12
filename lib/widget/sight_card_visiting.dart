@@ -34,7 +34,6 @@ class SightCardVisiting extends StatelessWidget {
                   ),
                 ),
                 decoration: BoxDecoration(
-                  color: backColorLight,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(16),
                     topRight: Radius.circular(16),
@@ -77,7 +76,10 @@ class SightCardVisiting extends StatelessWidget {
                   margin: EdgeInsets.only(top: 16, left: 16),
                   child: Text(
                     sight.type.toLowerCase(),
-                    style: textBoldWhite.copyWith(fontSize: 12),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText1
+                        .copyWith(fontSize: 12),
                   ),
                 ),
               ),
@@ -90,7 +92,7 @@ class SightCardVisiting extends StatelessWidget {
               borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(16),
                   bottomRight: Radius.circular(16)),
-              color: backColorLight,
+              color: Theme.of(context).accentColor,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,7 +109,7 @@ class SightCardVisiting extends StatelessWidget {
                   ),
                   child: Text(
                     sight.name,
-                    style: textTitle,
+                    style: Theme.of(context).textTheme.subtitle1,
                   ),
                 ),
                 Container(
@@ -119,7 +121,7 @@ class SightCardVisiting extends StatelessWidget {
                   ),
                   child: Text(
                     'Запланировано на 12 окт. 2021',
-                    style: textGreen,
+                    style: Theme.of(context).textTheme.bodyText2, // colorGreen
                   ),
                 ),
                 Container(
@@ -130,7 +132,7 @@ class SightCardVisiting extends StatelessWidget {
                   ),
                   child: Text(
                     'закрыто до 09:00',
-                    style: textDescription,
+                    style: Theme.of(context).textTheme.bodyText2,
                   ),
                 ),
               ],

@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
-import 'package:places/ui/res/colors.dart';
-import 'package:places/ui/res/text_style.dart';
 
 class SightCard extends StatelessWidget {
   final Sight sight;
@@ -34,7 +32,6 @@ class SightCard extends StatelessWidget {
                   ),
                 ),
                 decoration: BoxDecoration(
-                  color: backColorLight,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(16),
                     topRight: Radius.circular(16),
@@ -57,7 +54,10 @@ class SightCard extends StatelessWidget {
                   margin: EdgeInsets.only(top: 16, left: 16),
                   child: Text(
                     sight.type.toLowerCase(),
-                    style: textBoldWhite.copyWith(fontSize: 12),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText1
+                        .copyWith(fontSize: 12),
                   ),
                 ),
               ),
@@ -69,7 +69,7 @@ class SightCard extends StatelessWidget {
               borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(16),
                   bottomRight: Radius.circular(16)),
-              color: backColorLight,
+              color: Theme.of(context).accentColor,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,7 +84,7 @@ class SightCard extends StatelessWidget {
                   ),
                   child: Text(
                     sight.name,
-                    style: textTitle,
+                    style: Theme.of(context).textTheme.subtitle1,
                   ),
                 ),
                 Container(
@@ -96,7 +96,7 @@ class SightCard extends StatelessWidget {
                   ),
                   child: Text(
                     sight.details,
-                    style: textDescription,
+                    style: Theme.of(context).textTheme.bodyText2,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 1,
                   ),
