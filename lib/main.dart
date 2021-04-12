@@ -16,7 +16,7 @@ class MainApp extends StatefulWidget {
 
 class _AppState extends State<MainApp> {
   int currentIndex = 0;
-  bool isDarkMood = false;
+  bool isDarkMode = false;
 
   Widget buildBody() {
     if (currentIndex == 0) {
@@ -32,7 +32,7 @@ class _AppState extends State<MainApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Places',
-      theme: isDarkMood ? darkTheme: lightTheme,
+      theme: isDarkMode ? darkTheme: lightTheme,
       home: Stack(
         children: [
           buildBody(),

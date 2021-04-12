@@ -15,12 +15,12 @@ class VisitingScreen extends StatefulWidget {
 }
 
 class _VisitingScreenState extends State<VisitingScreen> {
-  bool isDarkMood = false;
+  bool isDarkMode = false;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: isDarkMood ? darkTheme : lightTheme,
+      theme: isDarkMode ? darkTheme : lightTheme,
       home: DefaultTabController(
         length: 2,
         child: Scaffold(
