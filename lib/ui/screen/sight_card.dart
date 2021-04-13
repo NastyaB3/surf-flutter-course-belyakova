@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places/domain/sight.dart';
+import 'package:places/ui/res/images.dart';
 
 class SightCard extends StatelessWidget {
   final Sight sight;
@@ -40,10 +42,11 @@ class SightCard extends StatelessWidget {
               ),
               Align(
                 child: Container(
-                  margin: EdgeInsets.only(top: 19, right: 18),
-                  child: Icon(
-                    Icons.favorite_border_outlined,
-                    color: Colors.white,
+                  child: TextButton(
+                    onPressed: (){
+                      print('Button pressed');
+                    },
+                    child: SvgPicture.asset(Images.icFavorite, color: Colors.white,),
                   ),
                 ),
                 alignment: Alignment.topRight,

@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/res/colors.dart';
+import 'package:places/ui/res/images.dart';
 import 'package:places/widget/icon_button_widget.dart';
 
 class SightDetails extends StatelessWidget {
@@ -69,17 +71,34 @@ class SightDetails extends StatelessWidget {
                       SizedBox(
                         height: 24,
                       ),
-                      Container(
-                        height: 48,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: ltColorGreen,
+                      ConstrainedBox(
+                        constraints: BoxConstraints.tightFor(height: 48),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            print('ElevationButton pressed');
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SvgPicture.asset(
+                                Images.icRoad,
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                'ПОСТРОИТЬ МАРШРУТ',
+                                style: Theme.of(context).textTheme.bodyText1,
+                              ),
+                            ],
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            primary: Theme.of(context).buttonColor,
+                          ),
                         ),
-                        child: Center(
-                            child: Text(
-                          'ПОСТРОИТЬ МАРШРУТ',
-                          style: Theme.of(context).textTheme.bodyText1,
-                        )),
                       ),
                       SizedBox(
                         height: 24,
@@ -96,14 +115,14 @@ class SightDetails extends StatelessWidget {
                           Expanded(
                             child: BuildButton(
                               'Запланировать',
-                              Icons.calendar_today_outlined,
+                              Images.icCalendar,
                               false,
                             ),
                           ),
                           Expanded(
                             child: BuildButton(
                               'В избранное',
-                              Icons.favorite_border_outlined,
+                              Images.icFavorite,
                               true,
                             ),
                           ),

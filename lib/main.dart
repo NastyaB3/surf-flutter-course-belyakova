@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:places/ui/res/images.dart';
 
 import 'package:places/ui/screen/res/themes.dart';
 
@@ -48,19 +50,19 @@ class _AppState extends State<MainApp> {
               currentIndex: currentIndex,
               items: [
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.list_alt_sharp),
+                  icon: SvgPicture.asset(Images.icList),
                   title: Text(''),
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.map),
+                  icon: SvgPicture.asset(Images.icMap),
                   title: Text(''),
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.favorite),
+                  icon: SvgPicture.asset(Images.icFavorite),
                   title: Text(''),
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.settings),
+                  icon: SvgPicture.asset(Images.icSetting),
                   title: Text(''),
                 ),
               ],

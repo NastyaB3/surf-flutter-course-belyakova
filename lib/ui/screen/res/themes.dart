@@ -8,6 +8,7 @@ final lightTheme = ThemeData(
   accentColor: backColorLight,
   scaffoldBackgroundColor: Colors.white,
   selectedRowColor: ltColorSecondary,
+  buttonColor: ltColorGreen,
   buttonTheme: ButtonThemeData(
     buttonColor: ltColorGreen,
     textTheme: ButtonTextTheme.primary,
@@ -35,6 +36,7 @@ final darkTheme = ThemeData(
   backgroundColor: dtColorMain,
   scaffoldBackgroundColor: dtColorMain,
   selectedRowColor: Colors.white,
+  buttonColor: dtColorGreen,
   buttonTheme: ButtonThemeData(
     buttonColor: dtColorGreen,
     textTheme: ButtonTextTheme.primary,

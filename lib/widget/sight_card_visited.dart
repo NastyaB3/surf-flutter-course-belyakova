@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/res/colors.dart';
+import 'package:places/ui/res/images.dart';
 import 'package:places/ui/res/text_style.dart';
 
 class SightCardVisited extends StatelessWidget {
@@ -47,22 +49,26 @@ class SightCardVisited extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Container(
-                        width: 24,
-                        height: 24,
-                        child: Icon(
-                          Icons.share,
-                          color: Colors.white,
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            onTap: () {
+                              print('Button pressed');
+                            },
+                            child: SvgPicture.asset(Images.icShare),
+                          ),
                         ),
                       ),
-                      SizedBox(
-                        width: 16,
-                      ),
+                      SizedBox(width: 17,),
                       Container(
-                        width: 24,
-                        height: 24,
-                        child: Icon(
-                          Icons.close,
-                          color: Colors.white,
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            onTap: () {
+                              print('Button pressed');
+                            },
+                            child: SvgPicture.asset(Images.icClose),
+                          ),
                         ),
                       ),
                     ],
