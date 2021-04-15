@@ -16,5 +16,6 @@ class Images {
   static String icRestaurant = '${assets}ic_restourant.svg';
   static String icTickChoice = '${assets}ic_tick_choice.svg';
   static String icFilter = '${assets}ic_filter.svg';
+  static String icInformation = '${assets}ic_union.svg';
 
 }

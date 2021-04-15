@@ -4,12 +4,24 @@ import 'package:places/ui/res/images.dart';
 import 'package:places/ui/screen/filters_screen.dart';
 
 import 'package:places/ui/screen/res/themes.dart';
+import 'package:places/ui/screen/settings_screen.dart';
 
 import 'package:places/ui/screen/sight_list_screen.dart';
 import 'package:places/ui/screen/visiting_screen.dart';
 
+ThemeChanger themeChanger = ThemeChanger();
+
 void main() {
   runApp(MainApp());
+}
+
+class ThemeChanger extends ChangeNotifier {
+  bool isDarkMode = false;
+
+  void setDarkMode(bool isDark) {
+    isDarkMode = isDark;
+    notifyListeners();
+  }
 }
 
 class MainApp extends StatefulWidget {
@@ -21,11 +33,23 @@ class _AppState extends State<MainApp> {
   int currentIndex = 0;
   bool isDarkMode = false;
 
+  @override
+  void initState() {
+    themeChanger.addListener(() {
+      setState(() {
+        isDarkMode = themeChanger.isDarkMode;
+      });
+    });
+    super.initState();
+  }
+
   Widget buildBody() {
     if (currentIndex == 0) {
       return SightListScreen();
     } else if (currentIndex == 2) {
       return VisitingScreen();
+    } else if (currentIndex == 3) {
+      return SettingsScreen();
     }
     return Container();
   }

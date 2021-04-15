@@ -11,82 +11,79 @@ class VisitingScreen extends StatefulWidget {
 }
 
 class _VisitingScreenState extends State<VisitingScreen> {
-  bool isDarkMode = false;
+
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: isDarkMode ? darkTheme : lightTheme,
-      home: DefaultTabController(
-        length: 2,
-        child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Theme.of(context).backgroundColor,
-            toolbarHeight: 120,
-            elevation: 0,
-            title: Container(
-              child: Center(
-                child: Text(
-                  'Избранное',
-                  style: Theme.of(context).textTheme.headline6,
-                ),
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).backgroundColor,
+          toolbarHeight: 120,
+          elevation: 0,
+          title: Container(
+            child: Center(
+              child: Text(
+                'Избранное',
+                style: Theme.of(context).textTheme.headline6,
               ),
             ),
-            bottom: PreferredSize(
-              child: Container(
-                margin: EdgeInsets.all(16),
-                decoration: BoxDecoration(
+          ),
+          bottom: PreferredSize(
+            child: Container(
+              margin: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(40),
+                color: Theme.of(context).accentColor,
+              ),
+              child: TabBar(
+                unselectedLabelColor: ltInactiveBlack,
+                indicator: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
                   borderRadius: BorderRadius.circular(40),
-                  color: Theme.of(context).accentColor,
                 ),
-                child: TabBar(
-                  unselectedLabelColor: ltInactiveBlack,
-                  indicator: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
-                    borderRadius: BorderRadius.circular(40),
+                tabs: [
+                  Container(
+                    child: Tab(
+                      child: Container(
+                        child: Center(
+                          child: Text(
+                            'Хочу посетить',
+                          ),
+                        ),
+                        height: 40,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(40),
+                        ),
+                      ),
+                    ),
                   ),
-                  tabs: [
-                    Container(
-                      child: Tab(
-                        child: Container(
-                          child: Center(
-                            child: Text(
-                              'Хочу посетить',
-                            ),
+                  Container(
+                    child: Tab(
+                      child: Container(
+                        child: Center(
+                          child: Text(
+                            'Посетил',
                           ),
-                          height: 40,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(40),
-                          ),
+                        ),
+                        height: 40,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(40),
                         ),
                       ),
                     ),
-                    Container(
-                      child: Tab(
-                        child: Container(
-                          child: Center(
-                            child: Text(
-                              'Посетил',
-                            ),
-                          ),
-                          height: 40,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(40),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
-          body: TabBarView(
-            children: [
-              buildListVisiting(),
-              buildListVisited(),
-            ],
-          ),
+        ),
+        body: TabBarView(
+          children: [
+            buildListVisiting(),
+            buildListVisited(),
+          ],
         ),
       ),
     );
