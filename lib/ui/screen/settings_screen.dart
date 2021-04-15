@@ -12,9 +12,6 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> with ChangeNotifier {
-  var isValue = false;
-  var isDarkMode = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,12 +44,8 @@ class _SettingsScreenState extends State<SettingsScreen> with ChangeNotifier {
             Padding(
               padding: const EdgeInsets.only(right: 16.0),
               child: Switch.adaptive(
-                value: isValue,
+                value: themeChanger.isDarkMode,
                 onChanged: (currentValue) {
-                  setState(() {
-                    isValue = currentValue;
-                  });
-
                   themeChanger.setDarkMode(currentValue);
                 },
               ),

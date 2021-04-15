@@ -13,30 +13,33 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          margin: EdgeInsets.only(top: 64, left: 16, right: 16),
-          child: Text(
-            'Список \nинтересных мест',
-            maxLines: 2,
-            style: Theme.of(context).textTheme.headline4,
-          ),
-        ),
-        Spacer(),
-        IconButton(
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => FiltersScreen()));
-          },
-          icon: Container(
-            child: SvgPicture.asset(
-              Images.icFilter,
-              color: ltColorGreen,
+    return Container(
+      color: Theme.of(context).backgroundColor,
+      child: Row(
+        children: [
+          Container(
+            margin: EdgeInsets.only(top: 64, left: 16, right: 16),
+            child: Text(
+              'Список \nинтересных мест',
+              maxLines: 2,
+              style: Theme.of(context).textTheme.headline4,
             ),
           ),
-        ),
-      ],
+          Spacer(),
+          IconButton(
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => FiltersScreen()));
+            },
+            icon: Container(
+              child: SvgPicture.asset(
+                Images.icFilter,
+                color: ltColorGreen,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 

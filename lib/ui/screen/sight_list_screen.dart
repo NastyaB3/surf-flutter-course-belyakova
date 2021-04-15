@@ -20,7 +20,8 @@ class _SightListScreenState extends State<SightListScreen> {
           children: mocks
               .map((sight) => Container(
                     margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                    child: GestureDetector(
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(16),
                       child: AspectRatio(
                         aspectRatio: 3 / 2,
                         child: SightCard(sight),

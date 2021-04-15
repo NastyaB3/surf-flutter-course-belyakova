@@ -16,7 +16,7 @@ class SightCard extends StatelessWidget {
         children: [
           Stack(
             children: [
-              Container(
+              Ink(
                 width: constraints.maxWidth,
                 height: constraints.maxHeight / 5 * 3,
                 child: ClipRRect(
@@ -24,16 +24,14 @@ class SightCard extends StatelessWidget {
                     topLeft: Radius.circular(16),
                     topRight: Radius.circular(16),
                   ),
-                  child: Image.network(
-                    sight.url,
-                    fit: BoxFit.cover,
-                    loadingBuilder: (context, child, loadingProgress) {
-                      if (loadingProgress == null) return child;
-                      return Center(child: CupertinoActivityIndicator());
-                    },
-                  ),
                 ),
                 decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      sight.url,
+                    ),
+                    fit: BoxFit.cover,
+                  ),
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(16),
                     topRight: Radius.circular(16),
@@ -43,10 +41,13 @@ class SightCard extends StatelessWidget {
               Align(
                 child: Container(
                   child: TextButton(
-                    onPressed: (){
+                    onPressed: () {
                       print('Button pressed');
                     },
-                    child: SvgPicture.asset(Images.icFavorite, color: Colors.white,),
+                    child: SvgPicture.asset(
+                      Images.icFavorite,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 alignment: Alignment.topRight,
@@ -66,7 +67,7 @@ class SightCard extends StatelessWidget {
               ),
             ],
           ),
-          Container(
+          Ink(
             height: constraints.maxHeight / 5 * 2,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
