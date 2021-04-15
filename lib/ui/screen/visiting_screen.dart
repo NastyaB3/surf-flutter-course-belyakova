@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:places/ui/res/colors.dart';
 import 'package:places/ui/screen/res/themes.dart';
-
 import 'package:places/widget/sight_card_visited.dart';
-
 import 'package:places/widget/sight_card_visiting.dart';
-
 import '../../mocks.dart';
 
 class VisitingScreen extends StatefulWidget {

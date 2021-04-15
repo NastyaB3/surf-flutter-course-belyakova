@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places/ui/res/images.dart';
+import 'package:places/ui/screen/filters_screen.dart';
 
 import 'package:places/ui/screen/res/themes.dart';
 
@@ -34,7 +35,7 @@ class _AppState extends State<MainApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Places',
-      theme: isDarkMode ? darkTheme: lightTheme,
+      theme: isDarkMode ? darkTheme : lightTheme,
       home: Stack(
         children: [
           buildBody(),
@@ -73,4 +74,3 @@ class _AppState extends State<MainApp> {
     );
   }
 }
-

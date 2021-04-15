@@ -25,8 +25,8 @@ final lightTheme = ThemeData(
     subtitle1: textText.apply(color: ltColorSecondary),
     bodyText1: textSmallBold.apply(color: Colors.white),
     bodyText2: textSmall.apply(color: ltColorSecondary2),
-    caption: textSuperSmall,
-    button: textButton,
+    caption: textSuperSmall.apply(color: ltColorSecondary),
+    button: textButton.apply(color: ltColorGreen),
   ),
 );
 
@@ -53,7 +53,7 @@ final darkTheme = ThemeData(
     subtitle1: textText.apply(color: Colors.white),
     bodyText1: textSmallBold.apply(color: Colors.white),
     bodyText2: textSmall.apply(color: dtColorSecondary2),
-    caption: textSuperSmall,
-    button: textButton,
+    caption: textSuperSmall.apply(color: Colors.white),
+    button: textButton.apply(color: dtColorGreen),
   ),
 );

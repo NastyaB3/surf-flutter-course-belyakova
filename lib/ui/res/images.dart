@@ -8,4 +8,13 @@ class Images {
   static String icClose = '${assets}ic_close.svg';
   static String icCalendar = '${assets}ic_calendar.svg';
   static String icRoad = '${assets}ic_road.svg';
+  static String icCafe = '${assets}ic_cafe.svg';
+  static String icHotel = '${assets}ic_hotel.svg';
+  static String icMuseum = '${assets}ic_museum.svg';
+  static String icPark = '${assets}ic_park.svg';
+  static String icParticularPlace = '${assets}ic_particular_place.svg';
+  static String icRestaurant = '${assets}ic_restourant.svg';
+  static String icTickChoice = '${assets}ic_tick_choice.svg';
+  static String icFilter = '${assets}ic_filter.svg';
+
 }

@@ -14,15 +14,11 @@ class BuildButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        print('Button pressed');
-      },
+      onTap: () {print('Button pressed');},
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(
-            height: 19,
-          ),
+          SizedBox(height: 19,),
           Container(
             child: SvgPicture.asset(
               images,
