@@ -8,6 +8,7 @@ final lightTheme = ThemeData(
   accentColor: backColorLight,
   scaffoldBackgroundColor: Colors.white,
   selectedRowColor: ltColorSecondary,
+  buttonColor: ltColorGreen,
   buttonTheme: ButtonThemeData(
     buttonColor: ltColorGreen,
     textTheme: ButtonTextTheme.primary,
@@ -24,8 +25,8 @@ final lightTheme = ThemeData(
     subtitle1: textText.apply(color: ltColorSecondary),
     bodyText1: textSmallBold.apply(color: Colors.white),
     bodyText2: textSmall.apply(color: ltColorSecondary2),
-    caption: textSuperSmall,
-    button: textButton,
+    caption: textSuperSmall.apply(color: ltColorSecondary),
+    button: textButton.apply(color: ltColorGreen),
   ),
 );
 
@@ -35,6 +36,7 @@ final darkTheme = ThemeData(
   backgroundColor: dtColorMain,
   scaffoldBackgroundColor: dtColorMain,
   selectedRowColor: Colors.white,
+  buttonColor: dtColorGreen,
   buttonTheme: ButtonThemeData(
     buttonColor: dtColorGreen,
     textTheme: ButtonTextTheme.primary,
@@ -51,7 +53,7 @@ final darkTheme = ThemeData(
     subtitle1: textText.apply(color: Colors.white),
     bodyText1: textSmallBold.apply(color: Colors.white),
     bodyText2: textSmall.apply(color: dtColorSecondary2),
-    caption: textSuperSmall,
-    button: textButton,
+    caption: textSuperSmall.apply(color: Colors.white),
+    button: textButton.apply(color: dtColorGreen),
   ),
 );

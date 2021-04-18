@@ -14,7 +14,7 @@ dependencies:
 
   flutter:
     sdk: flutter
-
+  provider: ^4.3.3
 
 
   cupertino_icons: ^1.0.2
@@ -31,25 +31,27 @@ flutter:
 
   uses-material-design: true
 
+  assets:
+    - res/images/
   fonts:
-  - family: Roboto
-    fonts:
-      - asset: res/fonts/Roboto/Roboto-Regular.ttf
-      - asset: res/fonts/Roboto/Roboto-Bold.ttf
-      - asset: res/fonts/Roboto/Roboto-Black.ttf
-      - asset: res/fonts/Roboto/Roboto-Light.ttf
-      - asset: res/fonts/Roboto/Roboto-Medium.ttf
-      - asset: res/fonts/Roboto/Roboto-Thin.ttf
+    - family: Roboto
+      fonts:
+        - asset: res/fonts/Roboto/Roboto-Regular.ttf
+        - asset: res/fonts/Roboto/Roboto-Bold.ttf
+        - asset: res/fonts/Roboto/Roboto-Black.ttf
+        - asset: res/fonts/Roboto/Roboto-Light.ttf
+        - asset: res/fonts/Roboto/Roboto-Medium.ttf
+        - asset: res/fonts/Roboto/Roboto-Thin.ttf
 
-      - asset: res/fonts/Roboto/Roboto-MediumItalic.ttf
-      - asset: res/fonts/Roboto/Roboto-ThinItalic.ttf
-        weight: 700
+        - asset: res/fonts/Roboto/Roboto-MediumItalic.ttf
+        - asset: res/fonts/Roboto/Roboto-ThinItalic.ttf
+          weight: 700
 
-  - family: Roboto
-    fonts:
-      - asset: res/fonts/Roboto/Roboto-BlackItalic.ttf
-      - asset: res/fonts/Roboto/Roboto-Italic.ttf
-      - asset: res/fonts/Roboto/Roboto-Light.ttf
-      - asset: res/fonts/Roboto/Roboto-LightItalic.ttf
-        style: italic
-        weight: 700
+    - family: Roboto
+      fonts:
+        - asset: res/fonts/Roboto/Roboto-BlackItalic.ttf
+        - asset: res/fonts/Roboto/Roboto-Italic.ttf
+        - asset: res/fonts/Roboto/Roboto-Light.ttf
+        - asset: res/fonts/Roboto/Roboto-LightItalic.ttf
+          style: italic
+          weight: 700

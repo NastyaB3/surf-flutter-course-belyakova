@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places/domain/sight.dart';
+import 'package:places/ui/res/images.dart';
 
 class SightCard extends StatelessWidget {
   final Sight sight;
@@ -14,7 +16,7 @@ class SightCard extends StatelessWidget {
         children: [
           Stack(
             children: [
-              Container(
+              Ink(
                 width: constraints.maxWidth,
                 height: constraints.maxHeight / 5 * 3,
                 child: ClipRRect(
@@ -22,16 +24,14 @@ class SightCard extends StatelessWidget {
                     topLeft: Radius.circular(16),
                     topRight: Radius.circular(16),
                   ),
-                  child: Image.network(
-                    sight.url,
-                    fit: BoxFit.cover,
-                    loadingBuilder: (context, child, loadingProgress) {
-                      if (loadingProgress == null) return child;
-                      return Center(child: CupertinoActivityIndicator());
-                    },
-                  ),
                 ),
                 decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      sight.url,
+                    ),
+                    fit: BoxFit.cover,
+                  ),
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(16),
                     topRight: Radius.circular(16),
@@ -40,10 +40,14 @@ class SightCard extends StatelessWidget {
               ),
               Align(
                 child: Container(
-                  margin: EdgeInsets.only(top: 19, right: 18),
-                  child: Icon(
-                    Icons.favorite_border_outlined,
-                    color: Colors.white,
+                  child: TextButton(
+                    onPressed: () {
+                      print('Button pressed');
+                    },
+                    child: SvgPicture.asset(
+                      Images.icFavorite,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 alignment: Alignment.topRight,
@@ -63,7 +67,7 @@ class SightCard extends StatelessWidget {
               ),
             ],
           ),
-          Container(
+          Ink(
             height: constraints.maxHeight / 5 * 2,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
