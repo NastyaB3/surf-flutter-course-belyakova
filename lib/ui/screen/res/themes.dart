@@ -3,6 +3,9 @@ import 'package:places/ui/res/colors.dart';
 import 'package:places/ui/res/text_style.dart';
 
 final lightTheme = ThemeData(
+  appBarTheme: AppBarTheme(centerTitle: true, iconTheme: IconThemeData(
+    color: ltColorMain,
+  ),),
   primaryColor: ltColorMain,
   backgroundColor: Colors.white,
   accentColor: backColorLight,
@@ -31,6 +34,9 @@ final lightTheme = ThemeData(
 );
 
 final darkTheme = ThemeData(
+  appBarTheme: AppBarTheme(centerTitle: true, iconTheme: IconThemeData(
+    color: Colors.white,
+  ),),
   primaryColor: Colors.white,
   accentColor: dtColorDark,
   backgroundColor: dtColorMain,
