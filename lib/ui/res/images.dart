@@ -19,6 +19,7 @@ class Images {
   static String icInformation = '${assets}ic_union.svg';
   static String icCloseRound = '${assets}ic_close_round.svg';
   static String icTick = '${assets}ic_tick.svg';
+  static String icSearch = '${assets}ic_search.svg';
   static String plusPng = '${assets}plus.png';
 
 

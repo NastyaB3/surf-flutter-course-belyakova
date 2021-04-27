@@ -18,11 +18,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: Row(
         children: [
           Container(
-            margin: EdgeInsets.only(top: 64, left: 16, right: 16),
+            margin:
+                EdgeInsets.only(top: statusBarHeight + 16, left: 16, right: 16),
             child: Text(
-              'Список \nинтересных мест',
-              maxLines: 2,
-              style: Theme.of(context).textTheme.headline4,
+              'Список интересных мест',
+              style: Theme.of(context).textTheme.headline6,
             ),
           ),
           Spacer(),
@@ -44,5 +44,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(statusBarHeight + 112 + 16);
+  Size get preferredSize => Size.fromHeight(statusBarHeight);
 }
