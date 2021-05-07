@@ -3,12 +3,19 @@ import 'package:places/ui/res/colors.dart';
 import 'package:places/ui/res/text_style.dart';
 
 final lightTheme = ThemeData(
+  appBarTheme: AppBarTheme(
+    centerTitle: true,
+    iconTheme: IconThemeData(
+      color: ltColorMain,
+    ),
+  ),
   primaryColor: ltColorMain,
-  backgroundColor: Colors.white,
+  backgroundColor: ltBackgroundColor,
   accentColor: backColorLight,
-  scaffoldBackgroundColor: Colors.white,
+  scaffoldBackgroundColor: ltBackgroundColor,
   selectedRowColor: ltColorSecondary,
   buttonColor: ltColorGreen,
+  indicatorColor: ltColorYellow,
   buttonTheme: ButtonThemeData(
     buttonColor: ltColorGreen,
     textTheme: ButtonTextTheme.primary,
@@ -31,12 +38,19 @@ final lightTheme = ThemeData(
 );
 
 final darkTheme = ThemeData(
+  appBarTheme: AppBarTheme(
+    centerTitle: true,
+    iconTheme: IconThemeData(
+      color: Colors.white,
+    ),
+  ),
   primaryColor: Colors.white,
   accentColor: dtColorDark,
   backgroundColor: dtColorMain,
   scaffoldBackgroundColor: dtColorMain,
   selectedRowColor: Colors.white,
   buttonColor: dtColorGreen,
+  indicatorColor: dtColorYellow,
   buttonTheme: ButtonThemeData(
     buttonColor: dtColorGreen,
     textTheme: ButtonTextTheme.primary,

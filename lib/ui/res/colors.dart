@@ -8,8 +8,10 @@ const Color textColorPrimary = Color(0xff3b3f59),
     ltColorSecondary2 = Color(0xff7C7E92),
     ltColorSecondary = Color(0xff3B3E5B),
     ltColorMain = Color(0xff252849),
-    ltInactiveBlack = Color(0x487C7E92),
-    lineColor = Color(0xffe7e7e7);
+    ltInactiveBlack = Color(0x8fb6b7c2),
+    lineColor = Color(0xffe7e7e7),
+    ltBackgroundColor = Color(0xffffffff),
+    backLineColor = Color(0xffb7dfb9);
 
 const Color dtColorYellow = Color(0xffFFE769),
     dtColorGreen = Color(0xff6ADA6F),

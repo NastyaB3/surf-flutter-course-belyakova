@@ -57,7 +57,7 @@ class SightCard extends StatelessWidget {
                 child: Container(
                   margin: EdgeInsets.only(top: 16, left: 16),
                   child: Text(
-                    sight.type.toLowerCase(),
+                    sight.type?.toLowerCase() ?? "",
                     style: Theme.of(context)
                         .textTheme
                         .bodyText1

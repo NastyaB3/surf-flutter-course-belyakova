@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:places/domain/sight.dart';
 import 'package:places/ui/res/colors.dart';
 import 'package:places/ui/res/images.dart';
 import 'package:places/ui/res/text_style.dart';
-import 'package:places/widget/calculate_distance.dart';
 import 'package:places/widget/category_icon_button.dart';
 
 import '../../mocks.dart';
+import '../../search.dart';
 
 class FiltersScreen extends StatefulWidget {
   @override
@@ -14,8 +13,10 @@ class FiltersScreen extends StatefulWidget {
 }
 
 class _FiltersScreenState extends State<FiltersScreen> {
-  RangeValues _currentRangeValues = const RangeValues(100, 10000);
+  RangeValues _currentRangeValues;
+
   int counter = 0;
+
   var _filters = {
     SightType.cafe: true,
     SightType.hotel: true,
@@ -27,6 +28,8 @@ class _FiltersScreenState extends State<FiltersScreen> {
 
   @override
   void initState() {
+    _currentRangeValues = RangeValues(Search.positionFrom, Search.positionTo);
+    _filters = Search.filters;
     counter = calculateDistance();
     super.initState();
   }
@@ -149,8 +152,8 @@ class _FiltersScreenState extends State<FiltersScreen> {
                 ],
               ),
               RangeSlider(
-                  min: 100,
-                  max: 10000,
+                  min: Search.defaultPositionFrom,
+                  max: Search.defaultPositionTo,
                   activeColor: Theme.of(context).buttonColor,
                   inactiveColor: ltInactiveBlack,
                   values: _currentRangeValues,
@@ -172,7 +175,10 @@ class _FiltersScreenState extends State<FiltersScreen> {
                   bottom: 20 + MediaQuery.of(context).padding.bottom),
               child: ElevatedButton(
                 onPressed: () {
-                  print('ElevationButton pressed');
+                  Search.positionFrom = _currentRangeValues.start;
+                  Search.positionTo = _currentRangeValues.end;
+                  Search.filters = _filters;
+                  Navigator.pop(context);
                 },
                 child: Text(
                   'ПОКАЗАТЬ ($counter)',
@@ -214,29 +220,11 @@ class _FiltersScreenState extends State<FiltersScreen> {
   }
 
   int calculateDistance() {
-    final userPosition = LatLng(55.753600, 37.621094);
-    final nearsPlaces = <Sight>[];
-
-    mocks.forEach((element) {
-      final kmFrom = _currentRangeValues.start / 1000;
-      final kmTo = _currentRangeValues.end / 1000;
-
-      final isNear = PositionNear.arePointsNear(
-        LatLng(element.lat, element.lon),
-        userPosition,
-        kmTo,
-      );
-      final isFar = PositionNear.arePointsFar(
-        LatLng(element.lat, element.lon),
-        userPosition,
-        kmFrom,
-      );
-
-      final isSelected = _filters[element.typeEnum];
-      if (isNear && isFar && isSelected) {
-        nearsPlaces.add(element);
-      }
-    });
+    var nearsPlaces = Search.search(
+      positionFrom: _currentRangeValues.start,
+      positionTo: _currentRangeValues.end,
+      filters: _filters,
+    );
     return nearsPlaces.length;
   }
 }
