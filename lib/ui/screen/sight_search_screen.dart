@@ -15,10 +15,23 @@ class SightSearchScreen extends StatefulWidget {
   _SightSearchScreenState createState() => _SightSearchScreenState();
 }
 
-class _SightSearchScreenState extends State<SightSearchScreen> {
+class _SightSearchScreenState extends State<SightSearchScreen> with TickerProviderStateMixin {
   List<Sight> searchResult = [];
   String _searchText = "";
-
+  bool isLoading = false;
+  AnimationController animationController;
+  @override
+  void dispose() {
+    super.dispose();
+    animationController.dispose();
+  }
+  @override
+  void initState() {
+    super.initState();
+    animationController =
+        AnimationController(duration: new Duration(seconds: 2), vsync: this);
+    animationController.repeat();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,6 +49,13 @@ class _SightSearchScreenState extends State<SightSearchScreen> {
   }
 
   Widget buildBody() {
+    if (isLoading) {
+      return Center(
+        child: CircularProgressIndicator(
+          valueColor: animationController.drive(ColorTween(begin: Theme.of(context).indicatorColor, end: Theme.of(context).buttonColor)),
+        ),
+      );
+    }
     if (_searchText.isEmpty && SearchHistory.history.isNotEmpty) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -174,13 +194,21 @@ class _SightSearchScreenState extends State<SightSearchScreen> {
     }
   }
 
-  void search(String query) {
+  void search(String query) async {
     setState(() {
+      isLoading = true;
       searchResult = Search.search(
           query: query,
           positionFrom: Search.positionFrom,
           positionTo: Search.positionTo,
           filters: Search.filters);
     });
+
+    await Future.delayed(Duration(seconds: 3));
+
+    setState(() {
+      isLoading = false;
+    });
+
   }
 }
