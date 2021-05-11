@@ -8,8 +8,9 @@ import 'package:places/ui/res/text_style.dart';
 
 class SightCardVisited extends StatelessWidget {
   final Sight sight;
+  final Function onClose;
 
-  SightCardVisited(this.sight);
+  SightCardVisited(this.sight, {this.onClose, Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +66,7 @@ class SightCardVisited extends StatelessWidget {
                           color: Colors.transparent,
                           child: InkWell(
                             onTap: () {
-                              print('Button pressed');
+                              onClose(sight);
                             },
                             child: SvgPicture.asset(Images.icClose),
                           ),
