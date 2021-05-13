@@ -6,10 +6,13 @@ import 'package:places/ui/res/colors.dart';
 import 'package:places/ui/res/images.dart';
 import 'package:places/ui/res/text_style.dart';
 
+import '../mocks.dart';
+
 class SightCardVisiting extends StatelessWidget {
   final Sight sight;
+  final Function onClose;
 
-  SightCardVisiting(this.sight);
+  SightCardVisiting(this.sight, {Key key, this.onClose}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +70,7 @@ class SightCardVisiting extends StatelessWidget {
                           color: Colors.transparent,
                           child: InkWell(
                             onTap: () {
-                              print('Button pressed');
+                              onClose(sight);
                             },
                             child: SvgPicture.asset(Images.icClose),
                           ),
