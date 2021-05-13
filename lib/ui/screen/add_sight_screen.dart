@@ -25,6 +25,7 @@ class _AddSightScreenState extends State<AddSightScreen> {
   FocusNode focusNodeLon = FocusNode();
   FocusNode focusNodeDetails = FocusNode();
   SightType type;
+  List<String> images = [];
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +65,72 @@ class _AddSightScreenState extends State<AddSightScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(children: [
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            images.add(mocks[0].url);
+                          });
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(left: 16, right: 16),
+                          width: 72,
+                          height: 72,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(color: backLineColor, width: 2),
+                            color: Colors.transparent,
+                          ),
+                          child: Image.asset(
+                            Images.plusPng,
+                            color: Theme.of(context).buttonColor,
+                          ),
+                        ),
+                      ),
+                      for (var url in images)
+                        Container(
+                          width: 72,
+                          height: 72,
+                          margin:
+                              EdgeInsets.only(right: 16),
+                          child: Stack(
+                            children: [
+                              GestureDetector(
+                                onTap: (){},
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: NetworkImage(url),
+                                          fit: BoxFit.cover),
+                                      borderRadius: BorderRadius.circular(12)),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.topRight,
+                                child: InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      images.remove(url);
+                                    });
+                                  },
+                                  child: Container(
+                                    padding: EdgeInsets.only(
+                                      top: 6,
+                                      right: 6,
+                                    ),
+                                    child: SvgPicture.asset(
+                                      Images.icSubtract,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                    ]),
+                  ),
                   Padding(
                     padding: const EdgeInsets.only(
                       left: 16,
