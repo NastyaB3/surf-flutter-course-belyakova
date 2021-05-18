@@ -11,6 +11,7 @@ import '../../mocks.dart';
 class AddSightScreen extends StatefulWidget {
   @override
   _AddSightScreenState createState() => _AddSightScreenState();
+
 }
 
 class _AddSightScreenState extends State<AddSightScreen> {
@@ -90,44 +91,52 @@ class _AddSightScreenState extends State<AddSightScreen> {
                         ),
                       ),
                       for (var url in images)
-                        Container(
-                          width: 72,
-                          height: 72,
-                          margin:
-                              EdgeInsets.only(right: 16),
-                          child: Stack(
-                            children: [
-                              GestureDetector(
-                                onTap: (){},
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          image: NetworkImage(url),
-                                          fit: BoxFit.cover),
-                                      borderRadius: BorderRadius.circular(12)),
-                                ),
-                              ),
-                              Align(
-                                alignment: Alignment.topRight,
-                                child: InkWell(
-                                  onTap: () {
-                                    setState(() {
-                                      images.remove(url);
-                                    });
-                                  },
+                        Dismissible(
+                          child: Container(
+                            width: 72,
+                            height: 72,
+                            margin: EdgeInsets.only(right: 16),
+                            child: Stack(
+                              children: [
+                                GestureDetector(
+                                  onTap: () {},
                                   child: Container(
-                                    padding: EdgeInsets.only(
-                                      top: 6,
-                                      right: 6,
-                                    ),
-                                    child: SvgPicture.asset(
-                                      Images.icSubtract,
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image: NetworkImage(url),
+                                            fit: BoxFit.cover),
+                                        borderRadius: BorderRadius.circular(12)),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: Alignment.topRight,
+                                  child: InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        images.remove(url);
+                                      });
+                                    },
+                                    child: Container(
+                                      padding: EdgeInsets.only(
+                                        top: 6,
+                                        right: 6,
+                                      ),
+                                      child: SvgPicture.asset(
+                                        Images.icSubtract,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
+                          key: ValueKey(url),
+                          direction: DismissDirection.vertical,
+                          onDismissed: (DismissDirection direction){
+                            setState(() {
+                              images.remove(url);
+                            });
+                          },
                         ),
                     ]),
                   ),
