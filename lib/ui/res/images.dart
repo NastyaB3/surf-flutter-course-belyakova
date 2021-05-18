@@ -22,6 +22,7 @@ class Images {
   static String icSearch = '${assets}ic_search.svg';
   static String plusPng = '${assets}plus.png';
   static String icSubtract = '${assets}ic_subtract.svg';
+  static String icBucket = '${assets}ic_bucket.svg';
 
 
 }

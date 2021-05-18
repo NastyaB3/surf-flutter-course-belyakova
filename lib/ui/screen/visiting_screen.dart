@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/res/colors.dart';
+import 'package:places/ui/res/images.dart';
 import 'package:places/widget/sight_card_visited.dart';
 import 'package:places/widget/sight_card_visiting.dart';
 import '../../mocks.dart';
@@ -108,13 +110,50 @@ class _VisitingScreenState extends State<VisitingScreen> {
                   margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                   child: AspectRatio(
                     aspectRatio: 3 / 2,
-                    child: SightCardVisiting(
-                      sight,
-                      onClose: (sight) {
+                    child: Dismissible(
+                      child: SightCardVisiting(
+                        sight,
+                        onClose: (sight) {
+                          setState(() {
+                            mocks.remove(sight);
+                          });
+                        },
+                      ),
+                      key: ValueKey(sight),
+                      onDismissed: (DismissDirection direction) {
                         setState(() {
-                          mocks.remove(sight);
+                          if (mocks.contains(sight)) {
+                            mocks.remove(sight);
+                          }
                         });
                       },
+                      background: Stack(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                color: Theme.of(context).errorColor,
+                                borderRadius: BorderRadius.circular(12)),
+                          ),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 16),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SvgPicture.asset(
+                                    Images.icBucket,
+                                  ),
+                                  Text(
+                                    'Удалить',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -183,14 +222,51 @@ class _VisitingScreenState extends State<VisitingScreen> {
                   margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                   child: AspectRatio(
                     aspectRatio: 3 / 2,
-                    child: SightCardVisited(
-                      sight,
-                      onClose: (sight) {
+                    child: Dismissible(
+                      child: SightCardVisited(
+                        sight,
+                        onClose: (sight) {
+                          setState(() {
+                            mocks.remove(sight);
+                          });
+                        },
+                        key: ValueKey('Text'),
+                      ),
+                      key: ValueKey(sight),
+                      onDismissed: (DismissDirection direction) {
                         setState(() {
-                          mocks.remove(sight);
+                          if (mocks.contains(sight)) {
+                            mocks.remove(sight);
+                          }
                         });
                       },
-                      key: ValueKey('Text'),
+                      background: Stack(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                color: Theme.of(context).errorColor,
+                                borderRadius: BorderRadius.circular(12)),
+                          ),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 16),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SvgPicture.asset(
+                                    Images.icBucket,
+                                  ),
+                                  Text(
+                                    'Удалить',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
