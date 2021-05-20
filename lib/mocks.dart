@@ -19,7 +19,7 @@ final List<Sight> mocks = [
     lat: 55.7475260,
     lon: 37.5814870,
     url:
-        'https://frade-msk.ru/wp-content/uploads/2019/05/restorany-moskvy-s-panoramnym-vidom-2.jpg',
+        'http://estetmag.ru/wp-content/uploads/2017/04/moskovskij-restoran-white-rabbit-snova-v-rejtinge-the-world-s-50-best-restaurants.jpg',
     details:
         'Панорамный ресторан в историческом центре Москвы авторская кухня. Шеф - повар Владимир Мухин ',
     type: 'Ресторан',

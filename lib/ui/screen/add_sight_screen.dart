@@ -80,7 +80,7 @@ class _AddSightScreenState extends State<AddSightScreen> {
                               });
                             },
                             child: Container(
-                              margin: EdgeInsets.only(left: 16, right: 16),
+                              margin: EdgeInsets.symmetric(horizontal: 16),
                               width: 72,
                               height: 72,
                               decoration: BoxDecoration(
