@@ -91,10 +91,11 @@ class _VisitingScreenState extends State<VisitingScreen> {
 
   Widget buildListVisiting() {
     if (mocks.isNotEmpty) {
-      return SingleChildScrollView(
-        child: Column(children: [
-          for (var sight in mocks)
-            DragTarget(onWillAccept: (Sight data) {
+      return ListView.builder(
+          itemCount: mocks.length,
+          itemBuilder: (context, index) {
+            final sight = mocks[index];
+            return DragTarget(onWillAccept: (Sight data) {
               return true;
             }, onAccept: (Sight data) {
               setState(() {
@@ -171,9 +172,8 @@ class _VisitingScreenState extends State<VisitingScreen> {
                   ),
                 ),
               );
-            }),
-        ]),
-      );
+            });
+          });
     } else {
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -203,89 +203,90 @@ class _VisitingScreenState extends State<VisitingScreen> {
 
   Widget buildListVisited() {
     if (mocks.isNotEmpty) {
-      return SingleChildScrollView(
-        child: Column(children: [
-          for (var sight in mocks)
-            DragTarget(onWillAccept: (Sight data) {
-              return true;
-            }, onAccept: (Sight data) {
-              setState(() {
-                int indexData = mocks.indexOf(data);
-                int indexSight = mocks.indexOf(sight);
-                mocks[indexSight] = data;
-                mocks[indexData] = sight;
-              });
-            }, builder: (context, candidateDate, rejectedDate) {
-              return LongPressDraggable(
-                data: sight,
-                child: Container(
-                  margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                  child: AspectRatio(
-                    aspectRatio: 3 / 2,
-                    child: Dismissible(
-                      child: SightCardVisited(
-                        sight,
-                        onClose: (sight) {
-                          setState(() {
-                            mocks.remove(sight);
-                          });
-                        },
-                        key: ValueKey('Text'),
-                      ),
-                      key: ValueKey(sight),
-                      onDismissed: (DismissDirection direction) {
+      return ListView.builder(
+        itemCount: mocks.length,
+        itemBuilder: (context, index) {
+          final sight = mocks[index];
+          return DragTarget(onWillAccept: (Sight data) {
+            return true;
+          }, onAccept: (Sight data) {
+            setState(() {
+              int indexData = mocks.indexOf(data);
+              int indexSight = mocks.indexOf(sight);
+              mocks[indexSight] = data;
+              mocks[indexData] = sight;
+            });
+          }, builder: (context, candidateDate, rejectedDate) {
+            return LongPressDraggable(
+              data: sight,
+              child: Container(
+                margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                child: AspectRatio(
+                  aspectRatio: 3 / 2,
+                  child: Dismissible(
+                    child: SightCardVisited(
+                      sight,
+                      onClose: (sight) {
                         setState(() {
-                          if (mocks.contains(sight)) {
-                            mocks.remove(sight);
-                          }
+                          mocks.remove(sight);
                         });
                       },
-                      background: Stack(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                color: Theme.of(context).errorColor,
-                                borderRadius: BorderRadius.circular(12)),
-                          ),
-                          Align(
-                            alignment: Alignment.centerRight,
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 16),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  SvgPicture.asset(
-                                    Images.icBucket,
-                                  ),
-                                  Text(
-                                    'Удалить',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ],
-                              ),
+                      key: ValueKey('Text'),
+                    ),
+                    key: ValueKey(sight),
+                    onDismissed: (DismissDirection direction) {
+                      setState(() {
+                        if (mocks.contains(sight)) {
+                          mocks.remove(sight);
+                        }
+                      });
+                    },
+                    background: Stack(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              color: Theme.of(context).errorColor,
+                              borderRadius: BorderRadius.circular(12)),
+                        ),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 16),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(
+                                  Images.icBucket,
+                                ),
+                                Text(
+                                  'Удалить',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
-                feedback: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.width * 2 / 3,
-                  padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                  child: SightCardVisited(
-                    sight,
-                    onClose: (sight) {
-                      setState(() {
-                        mocks.remove(sight);
-                      });
-                    },
-                  ),
+              ),
+              feedback: Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.width * 2 / 3,
+                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                child: SightCardVisited(
+                  sight,
+                  onClose: (sight) {
+                    setState(() {
+                      mocks.remove(sight);
+                    });
+                  },
                 ),
-              );
-            }),
-        ]),
+              ),
+            );
+          });
+        },
       );
     } else {
       return Column(

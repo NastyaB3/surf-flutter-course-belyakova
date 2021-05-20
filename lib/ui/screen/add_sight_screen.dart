@@ -11,7 +11,6 @@ import '../../mocks.dart';
 class AddSightScreen extends StatefulWidget {
   @override
   _AddSightScreenState createState() => _AddSightScreenState();
-
 }
 
 class _AddSightScreenState extends State<AddSightScreen> {
@@ -66,79 +65,88 @@ class _AddSightScreenState extends State<AddSightScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(children: [
-                      InkWell(
-                        onTap: () {
-                          setState(() {
-                            images.add(mocks[0].url);
-                          });
-                        },
-                        child: Container(
-                          margin: EdgeInsets.only(left: 16, right: 16),
-                          width: 72,
-                          height: 72,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(color: backLineColor, width: 2),
-                            color: Colors.transparent,
-                          ),
-                          child: Image.asset(
-                            Images.plusPng,
-                            color: Theme.of(context).buttonColor,
-                          ),
-                        ),
-                      ),
-                      for (var url in images)
-                        Dismissible(
-                          child: Container(
-                            width: 72,
-                            height: 72,
-                            margin: EdgeInsets.only(right: 16),
-                            child: Stack(
-                              children: [
-                                GestureDetector(
-                                  onTap: () {},
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: NetworkImage(url),
-                                            fit: BoxFit.cover),
-                                        borderRadius: BorderRadius.circular(12)),
-                                  ),
-                                ),
-                                Align(
-                                  alignment: Alignment.topRight,
-                                  child: InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        images.remove(url);
-                                      });
-                                    },
-                                    child: Container(
-                                      padding: EdgeInsets.only(
-                                        top: 6,
-                                        right: 6,
-                                      ),
-                                      child: SvgPicture.asset(
-                                        Images.icSubtract,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
+                  SizedBox(
+                    height: 100.0,
+                    child: ListView(
+                      keyboardDismissBehavior:
+                          ScrollViewKeyboardDismissBehavior.onDrag,
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        Row(children: [
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                images.add(mocks[0].url);
+                              });
+                            },
+                            child: Container(
+                              margin: EdgeInsets.symmetric(horizontal: 16),
+                              width: 72,
+                              height: 72,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                border:
+                                    Border.all(color: backLineColor, width: 2),
+                                color: Colors.transparent,
+                              ),
+                              child: Image.asset(
+                                Images.plusPng,
+                                color: Theme.of(context).buttonColor,
+                              ),
                             ),
                           ),
-                          key: ValueKey(url),
-                          direction: DismissDirection.vertical,
-                          onDismissed: (DismissDirection direction){
-                            setState(() {
-                              images.remove(url);
-                            });
-                          },
-                        ),
-                    ]),
+                          for (var url in images)
+                            Dismissible(
+                              child: Container(
+                                width: 72,
+                                height: 72,
+                                margin: EdgeInsets.only(right: 16),
+                                child: Stack(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {},
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                                image: NetworkImage(url),
+                                                fit: BoxFit.cover),
+                                            borderRadius:
+                                                BorderRadius.circular(12)),
+                                      ),
+                                    ),
+                                    Align(
+                                      alignment: Alignment.topRight,
+                                      child: InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            images.remove(url);
+                                          });
+                                        },
+                                        child: Container(
+                                          padding: EdgeInsets.only(
+                                            top: 6,
+                                            right: 6,
+                                          ),
+                                          child: SvgPicture.asset(
+                                            Images.icSubtract,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              key: ValueKey(url),
+                              direction: DismissDirection.vertical,
+                              onDismissed: (DismissDirection direction) {
+                                setState(() {
+                                  images.remove(url);
+                                });
+                              },
+                            ),
+                        ]),
+                      ],
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(

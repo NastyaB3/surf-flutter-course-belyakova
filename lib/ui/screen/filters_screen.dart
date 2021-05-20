@@ -64,7 +64,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
       ),
       body: Stack(
         children: [
-          Column(
+          ListView(
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 16, top: 24, right: 276),

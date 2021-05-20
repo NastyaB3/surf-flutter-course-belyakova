@@ -145,32 +145,30 @@ class _SightListScreenState extends State<SightListScreen> {
             Expanded(
               child: Stack(
                 children: [
-                  SingleChildScrollView(
-                    child: Column(
-                      children: mocks
-                          .map((sight) => Container(
-                                margin: EdgeInsets.symmetric(
-                                    vertical: 8, horizontal: 16),
-                                child: InkWell(
-                                  borderRadius: BorderRadius.circular(16),
-                                  child: AspectRatio(
-                                    aspectRatio: 3 / 2,
-                                    child: SightCard(sight),
-                                  ),
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            SightDetails(sight),
-                                      ),
-                                    );
-                                  },
+                  ListView.builder(
+                      itemCount: mocks.length,
+                      itemBuilder: (context, index) {
+                        final sight = mocks[index];
+                        return Container(
+                          margin:
+                              EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(16),
+                            child: AspectRatio(
+                              aspectRatio: 3 / 2,
+                              child: SightCard(sight),
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SightDetails(sight),
                                 ),
-                              ))
-                          .toList(),
-                    ),
-                  ),
+                              );
+                            },
+                          ),
+                        );
+                      }),
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: Container(
