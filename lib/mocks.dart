@@ -9,6 +9,7 @@ final List<Sight> mocks = [
     lon: 126.62002,
     url:
         'https://img.gazeta.ru/files3/345/6693345/Ice-on-Lake-Baikal-pic700-700x467-66269.jpg',
+    url_2: 'https://russia.travel/upload/resize/435821/1280_1280/1066790.jpg',
     details:
         'Oзеро тектонического происхождения в южной части Восточной Сибири, самое глубокое озеро на планете, крупнейший природный резервуар пресной воды и самое большое по площади пресноводное озеро на континенте.',
     type: 'Особое место',
@@ -19,7 +20,9 @@ final List<Sight> mocks = [
     lat: 55.7475260,
     lon: 37.5814870,
     url:
-        'http://estetmag.ru/wp-content/uploads/2017/04/moskovskij-restoran-white-rabbit-snova-v-rejtinge-the-world-s-50-best-restaurants.jpg',
+        'https://daauxcge0bfi7.cloudfront.net/photo/crop/rr9leatr14_960x496.jpg',
+    url_2:
+        'https://frade-msk.ru/wp-content/uploads/2019/05/restorany-moskvy-s-panoramnym-vidom-2.jpg',
     details:
         'Панорамный ресторан в историческом центре Москвы авторская кухня. Шеф - повар Владимир Мухин ',
     type: 'Ресторан',
@@ -41,6 +44,7 @@ final List<Sight> mocks = [
     lat: 59.939848,
     lon: 30.314568,
     url: 'https://piteronline.tv/images/2019/06/18/ermitaj_99799.jpg',
+    url_2: 'https://topspb.tv/media/768x432/news_covers/ert-minlkhbwpo.jpg',
     details:
         '3 миллиона произведений. 20 километров шедевров. А начинался Эрмитаж как частное собрание Екатерины II из 225 картин. Увидеть его могли лишь избранные, получив билет в дворцовой конторе и облачившись во фрак или мундир. ',
     type: 'Музей',
