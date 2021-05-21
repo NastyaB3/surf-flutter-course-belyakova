@@ -23,6 +23,9 @@ class Images {
   static String plusPng = '${assets}plus.png';
   static String icSubtract = '${assets}ic_subtract.svg';
   static String icBucket = '${assets}ic_bucket.svg';
+  static String icTutorial_1 = '${assets}ic_Tutorial_1.svg';
+  static String icTutorial_2 = '${assets}ic_Tutorial_2.svg';
+  static String icTutorial_3 = '${assets}ic_Tutorial_3.svg';
 
 
 }
