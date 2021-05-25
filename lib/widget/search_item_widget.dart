@@ -19,7 +19,7 @@ class SearchItemWidget extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
               image: DecorationImage(
                 image: NetworkImage(
-                  sight.url,
+                  sight.photo,
                 ),
                 fit: BoxFit.cover,
               ),

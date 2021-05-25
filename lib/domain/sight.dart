@@ -4,12 +4,12 @@ class Sight {
   String name;
   double lat;
   double lon;
-  String url;
-  String url_2;
+  String photo;
+  String detailPhoto;
   String details;
   String type;
   SightType typeEnum;
 
-  Sight({this.name, this.type, this.lat, this.lon, this.details, this.url, this.typeEnum, this.url_2});
+  Sight({this.name, this.type, this.lat, this.lon, this.details, this.photo, this.typeEnum, this.detailPhoto});
 
 }

@@ -30,7 +30,7 @@ class SightCardVisiting extends StatelessWidget {
                     topRight: Radius.circular(16),
                   ),
                   child: Image.network(
-                    sight.url,
+                    sight.photo,
                     fit: BoxFit.cover,
                     loadingBuilder: (context, child, loadingProgress) {
                       if (loadingProgress == null) return child;

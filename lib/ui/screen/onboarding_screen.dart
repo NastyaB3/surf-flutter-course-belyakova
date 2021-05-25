@@ -1,9 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:places/ui/res/colors.dart';
 import 'package:places/ui/res/images.dart';
+import 'package:places/widget/tutorial_card.dart';
 
 class OnboardingScreen extends StatefulWidget {
   @override
@@ -13,6 +11,7 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   PageController _pageController = PageController();
   int currentPage = 0;
+
   @override
   void initState() {
     _initPageController();
@@ -21,10 +20,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   void _initPageController() {
     Timer.periodic(Duration(seconds: 3), (timer) {
-        currentPage++;
-        if (currentPage > 2) {
-          currentPage = 0;
-        }
+      currentPage++;
+      if (currentPage > 2) {
+        currentPage = 0;
+      }
 
       if (_pageController.hasClients) {
         _pageController.animateToPage(currentPage,
@@ -32,7 +31,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       }
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -59,173 +57,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: PageView(
         controller: _pageController,
         children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SvgPicture.asset(Images.icTutorial_1),
-              SizedBox(
-                height: 42.6,
-              ),
-              Text(
-                'Добро пожаловать\nв Путеводитель',
-                style: Theme.of(context).textTheme.headline5,
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Text(
-                'Ищи новые локации и сохраняй\nсамые любимые.',
-                style: Theme.of(context).textTheme.bodyText2,
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: 117,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                      height: 8,
-                      width: 24,
-                      decoration: BoxDecoration(
-                          color: Theme.of(context).buttonColor,
-                          borderRadius: BorderRadius.circular(8))),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Container(
-                    height: 8,
-                    width: 8,
-                    decoration: BoxDecoration(
-                        color: ltInactiveBlack,
-                        borderRadius: BorderRadius.circular(8)),
-                  ),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Container(
-                    height: 8,
-                    width: 8,
-                    decoration: BoxDecoration(
-                        color: ltInactiveBlack,
-                        borderRadius: BorderRadius.circular(8)),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SvgPicture.asset(Images.icTutorial_2),
-              SizedBox(
-                height: 42.6,
-              ),
-              Text(
-                'Построй маршрут\nи отправляйся в путь',
-                style: Theme.of(context).textTheme.headline5,
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Text(
-                'Достигай цели максимально\nбыстро и комфортно.',
-                style: Theme.of(context).textTheme.bodyText2,
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: 117,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    height: 8,
-                    width: 8,
-                    decoration: BoxDecoration(
-                        color: ltInactiveBlack,
-                        borderRadius: BorderRadius.circular(8)),
-                  ),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Container(
-                      height: 8,
-                      width: 24,
-                      decoration: BoxDecoration(
-                          color: Theme.of(context).buttonColor,
-                          borderRadius: BorderRadius.circular(8))),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Container(
-                    height: 8,
-                    width: 8,
-                    decoration: BoxDecoration(
-                        color: ltInactiveBlack,
-                        borderRadius: BorderRadius.circular(8)),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SvgPicture.asset(Images.icTutorial_3),
-              SizedBox(
-                height: 42.6,
-              ),
-              Text(
-                'Добавляй места,\nкоторые нашёл сам',
-                style: Theme.of(context).textTheme.headline5,
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Text(
-                'Делись самыми интересными\nи помоги нам стать лучше!',
-                style: Theme.of(context).textTheme.bodyText2,
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: 117,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    height: 8,
-                    width: 8,
-                    decoration: BoxDecoration(
-                        color: ltInactiveBlack,
-                        borderRadius: BorderRadius.circular(8)),
-                  ),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Container(
-                    height: 8,
-                    width: 8,
-                    decoration: BoxDecoration(
-                        color: ltInactiveBlack,
-                        borderRadius: BorderRadius.circular(8)),
-                  ),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Container(
-                      height: 8,
-                      width: 24,
-                      decoration: BoxDecoration(
-                          color: Theme.of(context).buttonColor,
-                          borderRadius: BorderRadius.circular(8))),
-                ],
-              ),
-            ],
+          TutorialCard(Images.icTutorial_1, 'Добро пожаловать\nв Путеводитель',
+              'Ищи новые локации и сохраняй\nсамые любимые.'),
+          TutorialCard(
+              Images.icTutorial_2,
+              'Построй маршрут\nи отправляйся в путь',
+              'Достигай цели максимально\nбыстро и комфортно.'),
+          TutorialCard(
+            Images.icTutorial_3,
+            'Добавляй места,\nкоторые нашёл сам',
+            'Делись самыми интересными\nи помоги нам стать лучше!',
           ),
         ],
       ),

@@ -76,7 +76,7 @@ class _AddSightScreenState extends State<AddSightScreen> {
                           InkWell(
                             onTap: () {
                               setState(() {
-                                images.add(mocks[0].url);
+                                images.add(mocks[0].photo);
                               });
                             },
                             child: Container(
@@ -517,7 +517,7 @@ class _AddSightScreenState extends State<AddSightScreen> {
                                 name: _controllerName.text,
                                 lon: double.tryParse(_controllerLon.text),
                                 lat: double.tryParse(_controllerLat.text),
-                                url: '',
+                                photo: '',
                               ),
                             );
                           },

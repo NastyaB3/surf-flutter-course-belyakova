@@ -60,7 +60,7 @@ class _SightDetailsState extends State<SightDetails> {
                     controller: _pageController,
                     children: [
                       Image.network(
-                        widget.sight.url,
+                        widget.sight.photo,
                         fit: BoxFit.cover,
                         loadingBuilder: (context, child, loadingProgress) {
                           if (loadingProgress == null) return child;
@@ -68,7 +68,7 @@ class _SightDetailsState extends State<SightDetails> {
                         },
                       ),
                       Image.network(
-                        widget.sight.url_2,
+                        widget.sight.detailPhoto,
                         fit: BoxFit.cover,
                         loadingBuilder: (context, child, loadingProgress) {
                           if (loadingProgress == null) return child;
