@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,10 +7,42 @@ import 'package:places/ui/res/colors.dart';
 import 'package:places/ui/res/images.dart';
 import 'package:places/widget/icon_button_widget.dart';
 
-class SightDetails extends StatelessWidget {
+class SightDetails extends StatefulWidget {
   final Sight sight;
 
-  SightDetails(this.sight);
+  SightDetails(this.sight, {Key key}) : super(key: key);
+
+  @override
+  _SightDetailsState createState() => _SightDetailsState();
+}
+
+class _SightDetailsState extends State<SightDetails> {
+  final PageController _pageController = PageController();
+
+  int currentPage = 0;
+
+  @override
+  void initState() {
+    _initPageController();
+    super.initState();
+  }
+
+  void _initPageController() {
+    Timer.periodic(Duration(seconds: 3), (timer) {
+      setState(() {
+        currentPage++;
+        if (currentPage > 1) {
+          currentPage =
+              0; //пока написала currentPage = 1, потому что у меня всего 2 фотографии, когда будем работать с сетью, переделаю
+        }
+      });
+
+      if (_pageController.hasClients) {
+        _pageController.animateToPage(currentPage,
+            duration: Duration(milliseconds: 300), curve: Curves.linear);
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +54,61 @@ class SightDetails extends StatelessWidget {
             flexibleSpace: Container(
               height: 360 + kToolbarHeight,
               width: double.infinity,
-              child: Image.network(
-                sight.url,
-                fit: BoxFit.cover,
-                loadingBuilder: (context, child, loadingProgress) {
-                  if (loadingProgress == null) return child;
-                  return Center(child: CupertinoActivityIndicator());
-                },
+              child: Stack(
+                children: [
+                  PageView(
+                    controller: _pageController,
+                    children: [
+                      Image.network(
+                        widget.sight.photo,
+                        fit: BoxFit.cover,
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) return child;
+                          return Center(child: CupertinoActivityIndicator());
+                        },
+                      ),
+                      Image.network(
+                        widget.sight.detailPhoto,
+                        fit: BoxFit.cover,
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) return child;
+                          return Center(child: CupertinoActivityIndicator());
+                        },
+                      ),
+                    ],
+                  ),
+                  Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Row(
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width / 2,
+                          height: 7.57,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                                bottomRight: Radius.circular(8),
+                                topRight: Radius.circular(8)),
+                            color: currentPage == 0
+                                ? Theme.of(context).primaryColor
+                                : Colors.transparent,
+                          ),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width / 2,
+                          height: 7.57,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(8),
+                                topLeft: Radius.circular(8)),
+                            color: currentPage == 1
+                                ? Theme.of(context).primaryColor
+                                : Colors.transparent,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -40,7 +121,7 @@ class SightDetails extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        sight.name,
+                        widget.sight.name,
                         style: Theme.of(context).textTheme.headline5,
                       ),
                       SizedBox(
@@ -49,7 +130,7 @@ class SightDetails extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            sight.type.toLowerCase(),
+                            widget.sight.type.toLowerCase(),
                             style: Theme.of(context).textTheme.subtitle1,
                           ),
                           SizedBox(
@@ -65,7 +146,7 @@ class SightDetails extends StatelessWidget {
                         height: 24,
                       ),
                       Text(
-                        sight.details,
+                        widget.sight.details,
                         style: Theme.of(context).textTheme.bodyText2,
                       ),
                       SizedBox(

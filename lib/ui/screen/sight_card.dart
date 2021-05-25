@@ -28,7 +28,7 @@ class SightCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: NetworkImage(
-                      sight.url,
+                      sight.photo,
                     ),
                     fit: BoxFit.cover,
                   ),

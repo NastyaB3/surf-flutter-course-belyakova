@@ -3,8 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places/main.dart';
 import 'package:places/ui/res/colors.dart';
 import 'package:places/ui/res/images.dart';
-import 'package:places/ui/screen/res/themes.dart';
-import 'package:provider/provider.dart';
+import 'package:places/ui/screen/onboarding_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   @override
@@ -78,7 +77,14 @@ class _SettingsScreenState extends State<SettingsScreen> with ChangeNotifier {
             Spacer(),
             Padding(
               padding: const EdgeInsets.only(right: 26.0),
-              child: SvgPicture.asset(Images.icInformation),
+              child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => OnboardingScreen()));
+                  },
+                  child: SvgPicture.asset(Images.icInformation)),
             ),
           ],
         ),
