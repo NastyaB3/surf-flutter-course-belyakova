@@ -50,6 +50,7 @@ class _SightDetailsState extends State<SightDetails> {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            floating: false,
             expandedHeight: 360.0,
             flexibleSpace: Container(
               height: 360 + kToolbarHeight,
