@@ -15,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<bool> isInitialized() async {
     await Future.delayed(Duration(seconds: 2));
-    return Future.value(true);
+    return true;
   }
 
   @override
