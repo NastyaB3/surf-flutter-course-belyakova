@@ -7,6 +7,7 @@ import 'package:places/ui/screen/res/themes.dart';
 import 'package:places/ui/screen/settings_screen.dart';
 
 import 'package:places/ui/screen/sight_list_screen.dart';
+import 'package:places/ui/screen/splash_screen.dart';
 import 'package:places/ui/screen/visiting_screen.dart';
 
 ThemeChanger themeChanger = ThemeChanger();
@@ -60,6 +61,7 @@ class _AppState extends State<MainApp> {
       debugShowCheckedModeBanner: false,
       title: 'Places',
       theme: isDarkMode ? darkTheme : lightTheme,
+      // home: SplashScreen(),
       home: Stack(
         children: [
           buildBody(),
