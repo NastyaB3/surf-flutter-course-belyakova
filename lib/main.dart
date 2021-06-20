@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places/ui/res/images.dart';
-import 'package:places/ui/screen/filters_screen.dart';
-
 import 'package:places/ui/screen/res/themes.dart';
 import 'package:places/ui/screen/settings_screen.dart';
 
@@ -31,7 +29,6 @@ class MainApp extends StatefulWidget {
 }
 
 class _AppState extends State<MainApp> {
-  int currentIndex = 0;
   bool isDarkMode = false;
 
   @override
@@ -43,6 +40,25 @@ class _AppState extends State<MainApp> {
     });
     super.initState();
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Places',
+      theme: isDarkMode ? darkTheme : lightTheme,
+      home: SplashScreen(),
+    );
+  }
+}
+
+class MainScreen extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _StateMainScreen();
+}
+
+class _StateMainScreen extends State<MainScreen> {
+  int currentIndex = 0;
 
   Widget buildBody() {
     if (currentIndex == 0) {
@@ -57,12 +73,8 @@ class _AppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Places',
-      theme: isDarkMode ? darkTheme : lightTheme,
-      // home: SplashScreen(),
-      home: Stack(
+    return Scaffold(
+      body: Stack(
         children: [
           buildBody(),
           Align(

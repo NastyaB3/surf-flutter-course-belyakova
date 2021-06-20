@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places/ui/res/images.dart';
+import 'package:places/ui/screen/onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -10,7 +11,9 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   void _navigateToNext() async {
     await isInitialized();
-    print('Переход на следующий экран');
+
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => OnboardingScreen()));
   }
 
   Future<bool> isInitialized() async {

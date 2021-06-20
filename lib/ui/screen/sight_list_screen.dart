@@ -264,20 +264,22 @@ class StickyHeaderDelegate extends SliverPersistentHeaderDelegate {
         ),
       );
     }
-    return Container(
-      color: Theme.of(context).backgroundColor,
-      padding:
-          EdgeInsets.only(left: 16, top: MediaQuery.of(context).padding.top),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Список \nинтересных мест',
-            style: Theme.of(context).textTheme.headline4.copyWith(
-                fontSize: Theme.of(context).textTheme.headline6.fontSize +
-                    calculatedSize),
-          ),
-        ],
+    return SingleChildScrollView(
+      child: Container(
+        color: Theme.of(context).backgroundColor,
+        padding:
+            EdgeInsets.only(left: 16, top: MediaQuery.of(context).padding.top),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Список \nинтересных мест',
+              style: Theme.of(context).textTheme.headline4.copyWith(
+                  fontSize: Theme.of(context).textTheme.headline6.fontSize +
+                      calculatedSize),
+            ),
+          ],
+        ),
       ),
     );
   }

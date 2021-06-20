@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/res/colors.dart';
 import 'package:places/ui/res/images.dart';
+import 'package:places/ui/screen/sight_details.dart';
 import 'package:places/widget/sight_card_visited.dart';
 import 'package:places/widget/sight_card_visiting.dart';
 import '../../mocks.dart';
@@ -112,13 +113,23 @@ class _VisitingScreenState extends State<VisitingScreen> {
                   child: AspectRatio(
                     aspectRatio: 3 / 2,
                     child: Dismissible(
-                      child: SightCardVisiting(
-                        sight,
-                        onClose: (sight) {
-                          setState(() {
-                            mocks.remove(sight);
-                          });
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SightDetails(sight),
+                            ),
+                          );
                         },
+                        child: SightCardVisiting(
+                          sight,
+                          onClose: (sight) {
+                            setState(() {
+                              mocks.remove(sight);
+                            });
+                          },
+                        ),
                       ),
                       key: ValueKey(sight),
                       onDismissed: (DismissDirection direction) {
@@ -224,14 +235,24 @@ class _VisitingScreenState extends State<VisitingScreen> {
                 child: AspectRatio(
                   aspectRatio: 3 / 2,
                   child: Dismissible(
-                    child: SightCardVisited(
-                      sight,
-                      onClose: (sight) {
-                        setState(() {
-                          mocks.remove(sight);
-                        });
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SightDetails(sight),
+                          ),
+                        );
                       },
-                      key: ValueKey('Text'),
+                      child: SightCardVisited(
+                        sight,
+                        onClose: (sight) {
+                          setState(() {
+                            mocks.remove(sight);
+                          });
+                        },
+                        key: ValueKey('Text'),
+                      ),
                     ),
                     key: ValueKey(sight),
                     onDismissed: (DismissDirection direction) {

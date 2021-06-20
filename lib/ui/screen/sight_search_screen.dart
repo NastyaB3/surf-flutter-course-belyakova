@@ -15,16 +15,19 @@ class SightSearchScreen extends StatefulWidget {
   _SightSearchScreenState createState() => _SightSearchScreenState();
 }
 
-class _SightSearchScreenState extends State<SightSearchScreen> with TickerProviderStateMixin {
+class _SightSearchScreenState extends State<SightSearchScreen>
+    with TickerProviderStateMixin {
   List<Sight> searchResult = [];
   String _searchText = "";
   bool isLoading = false;
   AnimationController animationController;
+
   @override
   void dispose() {
     super.dispose();
     animationController.dispose();
   }
+
   @override
   void initState() {
     super.initState();
@@ -32,6 +35,7 @@ class _SightSearchScreenState extends State<SightSearchScreen> with TickerProvid
         AnimationController(duration: new Duration(seconds: 2), vsync: this);
     animationController.repeat();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +56,9 @@ class _SightSearchScreenState extends State<SightSearchScreen> with TickerProvid
     if (isLoading) {
       return Center(
         child: CircularProgressIndicator(
-          valueColor: animationController.drive(ColorTween(begin: Theme.of(context).indicatorColor, end: Theme.of(context).buttonColor)),
+          valueColor: animationController.drive(ColorTween(
+              begin: Theme.of(context).indicatorColor,
+              end: Theme.of(context).buttonColor)),
         ),
       );
     }
@@ -209,6 +215,5 @@ class _SightSearchScreenState extends State<SightSearchScreen> with TickerProvid
     setState(() {
       isLoading = false;
     });
-
   }
 }
