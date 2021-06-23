@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:places/main.dart';
 import 'package:places/ui/res/images.dart';
 import 'package:places/widget/tutorial_card.dart';
 
@@ -42,7 +43,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           Container(
             padding: EdgeInsets.only(right: 16),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MainScreen(),
+                  ),
+                );
+              },
               child: Text(
                 'Пропустить',
                 style: Theme.of(context)
