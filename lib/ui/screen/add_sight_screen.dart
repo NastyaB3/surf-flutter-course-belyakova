@@ -6,6 +6,7 @@ import 'package:places/ui/res/colors.dart';
 import 'package:places/ui/res/images.dart';
 import 'package:places/ui/res/text_style.dart';
 import 'package:places/widget/category.dart';
+import 'package:places/widget/dialog_photo.dart';
 import '../../mocks.dart';
 
 class AddSightScreen extends StatefulWidget {
@@ -76,7 +77,11 @@ class _AddSightScreenState extends State<AddSightScreen> {
                           InkWell(
                             onTap: () {
                               setState(() {
-                                images.add(mocks[0].photo);
+                                showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return DialogPhoto();
+                                    });
                               });
                             },
                             child: Container(

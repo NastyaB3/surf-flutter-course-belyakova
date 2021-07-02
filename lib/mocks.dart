@@ -22,7 +22,7 @@ final List<Sight> mocks = [
     photo:
         'https://daauxcge0bfi7.cloudfront.net/photo/crop/rr9leatr14_960x496.jpg',
     detailPhoto:
-        'https://frade-msk.ru/wp-content/uploads/2019/05/restorany-moskvy-s-panoramnym-vidom-2.jpg',
+        'https://media-cdn.tripadvisor.com/media/photo-s/1b/91/bf/b6/caption.jpg',
     details:
         'Панорамный ресторан в историческом центре Москвы авторская кухня. Шеф - повар Владимир Мухин ',
     type: 'Ресторан',
@@ -33,7 +33,7 @@ final List<Sight> mocks = [
     lat: 55.7475260,
     lon: 37.5814870,
     photo:
-        'https://frade-msk.ru/wp-content/uploads/2019/05/restorany-moskvy-s-panoramnym-vidom-2.jpg',
+        'https://media-cdn.tripadvisor.com/media/photo-s/1b/91/bf/b6/caption.jpg',
     details:
         'Панорамный ресторан в историческом центре Москвы авторская кухня. Шеф - повар Владимир Мухин ',
     type: 'Ресторан',
@@ -43,7 +43,7 @@ final List<Sight> mocks = [
     name: 'Эрмитаж',
     lat: 59.939848,
     lon: 30.314568,
-    photo: 'https://piteronline.tv/images/2019/06/18/ermitaj_99799.jpg',
+    photo: 'https://topspb.tv/media/768x432/news_covers/ert-minlkhbwpo.jpg',
     detailPhoto: 'https://topspb.tv/media/768x432/news_covers/ert-minlkhbwpo.jpg',
     details:
         '3 миллиона произведений. 20 километров шедевров. А начинался Эрмитаж как частное собрание Екатерины II из 225 картин. Увидеть его могли лишь избранные, получив билет в дворцовой конторе и облачившись во фрак или мундир. ',
