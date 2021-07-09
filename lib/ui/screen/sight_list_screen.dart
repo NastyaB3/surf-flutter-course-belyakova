@@ -172,12 +172,6 @@ class _SightListScreenState extends State<SightListScreen> {
                                       context: context,
                                       builder: (context) {
                                         return Container(
-                                          decoration: new BoxDecoration(
-                                              borderRadius: BorderRadius.only(
-                                                  topLeft:
-                                                      Radius.circular(16.0),
-                                                  topRight:
-                                                      Radius.circular(16.0))),
                                           height: MediaQuery.of(context)
                                                   .size
                                                   .height *

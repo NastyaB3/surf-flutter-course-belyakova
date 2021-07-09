@@ -47,203 +47,203 @@ class _DetailsBottomSheetState extends State<DetailsBottomSheet> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       controller: controller,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            height: 300,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(16),
-                topLeft: Radius.circular(16),
-              ),
-            ),
-            child: Stack(
-              children: [
-                PageView(
-                  controller: _pageController,
-                  children: [
-                    Image.network(
-                      widget.sight.photo,
-                      fit: BoxFit.cover,
-                      loadingBuilder: (context, child, loadingProgress) {
-                        if (loadingProgress == null) return child;
-                        return Center(child: CupertinoActivityIndicator());
-                      },
-                    ),
-                    Image.network(
-                      widget.sight.detailPhoto,
-                      fit: BoxFit.cover,
-                      loadingBuilder: (context, child, loadingProgress) {
-                        if (loadingProgress == null) return child;
-                        return Center(child: CupertinoActivityIndicator());
-                      },
-                    ),
-                  ],
-                ),
-                Container(
-                  padding: EdgeInsets.only(top: 12),
-                  child: Align(
-                      alignment: Alignment.topCenter,
-                      child: SvgPicture.asset(
-                        Images.icMinimize,
-                      )),
-                ),
-                Container(
-                  padding: EdgeInsets.only(top: 16, right: 16),
-                  child: Align(
-                      alignment: Alignment.topRight,
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: SvgPicture.asset(
-                          Images.icCardClose,
-                        ),
-                      )),
-                ),
-                Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Row(
+      child: ClipRRect(
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(8),
+          topLeft: Radius.circular(8),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: 300,
+              child: Stack(
+                children: [
+                  PageView(
+                    controller: _pageController,
                     children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2,
-                        height: 7.57,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              bottomRight: Radius.circular(8),
-                              topRight: Radius.circular(8)),
-                          color: _currentPage == 0
-                              ? Theme.of(context).primaryColor
-                              : Colors.transparent,
-                        ),
+                      Image.network(
+                        widget.sight.photo,
+                        fit: BoxFit.cover,
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) return child;
+                          return Center(child: CupertinoActivityIndicator());
+                        },
                       ),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2,
-                        height: 7.57,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(8),
-                              topLeft: Radius.circular(8)),
-                          color: _currentPage == 1
-                              ? Theme.of(context).primaryColor
-                              : Colors.transparent,
-                        ),
+                      Image.network(
+                        widget.sight.detailPhoto,
+                        fit: BoxFit.cover,
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) return child;
+                          return Center(child: CupertinoActivityIndicator());
+                        },
                       ),
                     ],
                   ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.only(left: 16),
-            child: Text(
-              widget.sight.name,
-              style: Theme.of(context).textTheme.headline5,
-            ),
-          ),
-          SizedBox(
-            height: 2,
-          ),
-          Container(
-            padding: EdgeInsets.only(left: 16),
-            child: Row(
-              children: [
-                Text(
-                  widget.sight.type.toLowerCase(),
-                  style: Theme.of(context).textTheme.subtitle1,
-                ),
-                SizedBox(
-                  width: 16,
-                ),
-                Text(
-                  'закрыто до 09:00',
-                  style: Theme.of(context).textTheme.bodyText2,
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 24,
-          ),
-          Container(
-            padding: EdgeInsets.only(left: 16),
-            child: Text(
-              widget.sight.details,
-              style: Theme.of(context).textTheme.bodyText2,
-            ),
-          ),
-          SizedBox(
-            height: 24,
-          ),
-          Container(
-            padding: EdgeInsets.only(left: 16),
-            child: ConstrainedBox(
-              constraints: BoxConstraints.tightFor(height: 48),
-              child: ElevatedButton(
-                onPressed: () {
-                  print('ElevationButton pressed');
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset(
-                      Images.icRoad,
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      'ПОСТРОИТЬ МАРШРУТ',
-                      style: Theme.of(context).textTheme.bodyText1,
-                    ),
-                  ],
-                ),
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                  Container(
+                    padding: EdgeInsets.only(top: 12),
+                    child: Align(
+                        alignment: Alignment.topCenter,
+                        child: SvgPicture.asset(
+                          Images.icMinimize,
+                        )),
                   ),
-                  primary: Theme.of(context).buttonColor,
+                  Container(
+                    padding: EdgeInsets.only(top: 16, right: 16),
+                    child: Align(
+                        alignment: Alignment.topRight,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: SvgPicture.asset(
+                            Images.icCardClose,
+                          ),
+                        )),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Row(
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width / 2,
+                          height: 7.57,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                                bottomRight: Radius.circular(8),
+                                topRight: Radius.circular(8)),
+                            color: _currentPage == 0
+                                ? Theme.of(context).primaryColor
+                                : Colors.transparent,
+                          ),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width / 2,
+                          height: 7.57,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(8),
+                                topLeft: Radius.circular(8)),
+                            color: _currentPage == 1
+                                ? Theme.of(context).primaryColor
+                                : Colors.transparent,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(left: 16),
+              child: Text(
+                widget.sight.name,
+                style: Theme.of(context).textTheme.headline5,
+              ),
+            ),
+            SizedBox(
+              height: 2,
+            ),
+            Container(
+              padding: EdgeInsets.only(left: 16),
+              child: Row(
+                children: [
+                  Text(
+                    widget.sight.type.toLowerCase(),
+                    style: Theme.of(context).textTheme.subtitle1,
+                  ),
+                  SizedBox(
+                    width: 16,
+                  ),
+                  Text(
+                    'закрыто до 09:00',
+                    style: Theme.of(context).textTheme.bodyText2,
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 24,
+            ),
+            Container(
+              padding: EdgeInsets.only(left: 16),
+              child: Text(
+                widget.sight.details,
+                style: Theme.of(context).textTheme.bodyText2,
+              ),
+            ),
+            SizedBox(
+              height: 24,
+            ),
+            Container(
+              padding: EdgeInsets.only(left: 16),
+              child: ConstrainedBox(
+                constraints: BoxConstraints.tightFor(height: 48),
+                child: ElevatedButton(
+                  onPressed: () {
+                    print('ElevationButton pressed');
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        Images.icRoad,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        'ПОСТРОИТЬ МАРШРУТ',
+                        style: Theme.of(context).textTheme.bodyText1,
+                      ),
+                    ],
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    primary: Theme.of(context).buttonColor,
+                  ),
                 ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 24,
-          ),
-          Container(
-            height: 0.8,
-            color: ltInactiveBlack,
-          ),
-          SizedBox(
-            height: 8,
-          ),
-          Container(
-            padding: EdgeInsets.only(left: 16),
-            child: Row(
-              children: [
-                Expanded(
-                  child: BuildButton(
-                    'Запланировать',
-                    Images.icCalendar,
-                    false,
-                  ),
-                ),
-                Expanded(
-                  child: BuildButton(
-                    'В избранное',
-                    Images.icFavorite,
-                    true,
-                  ),
-                ),
-              ],
+            SizedBox(
+              height: 24,
             ),
-          ),
-          SizedBox(
-            height: 20 + MediaQuery.of(context).padding.bottom,
-          ),
-        ],
+            Container(
+              height: 0.8,
+              color: ltInactiveBlack,
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            Container(
+              padding: EdgeInsets.only(left: 16),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: BuildButton(
+                      'Запланировать',
+                      Images.icCalendar,
+                      false,
+                    ),
+                  ),
+                  Expanded(
+                    child: BuildButton(
+                      'В избранное',
+                      Images.icFavorite,
+                      true,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20 + MediaQuery.of(context).padding.bottom,
+            ),
+          ],
+        ),
       ),
     );
   }
