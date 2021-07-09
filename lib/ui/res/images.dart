@@ -27,6 +27,11 @@ class Images {
   static String icTutorial_2 = '${assets}ic_Tutorial_2.svg';
   static String icTutorial_3 = '${assets}ic_Tutorial_3.svg';
   static String icMapBg = '${assets}ic_map_bg.svg';
+  static String icCardClose = '${assets}ic_card_close.svg';
+  static String icMinimize = '${assets}ic_minimaze.svg';
+  static String icPhoto = '${assets}ic_photo.svg';
+  static String icFail = '${assets}ic_fail.svg';
+  static String icCamera = '${assets}ic_camera2.svg';
 
 
 }

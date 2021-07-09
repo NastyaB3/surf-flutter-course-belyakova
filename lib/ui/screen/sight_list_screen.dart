@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:places/domain/sight.dart';
 import 'package:places/ui/res/colors.dart';
 import 'package:places/ui/res/images.dart';
 import 'package:places/ui/screen/filters_screen.dart';
 import 'package:places/ui/screen/sight_card.dart';
 import 'package:places/ui/screen/sight_details.dart';
 import 'package:places/ui/screen/sight_search_screen.dart';
+import 'package:places/widget/details_bottomSheet.dart';
 import '../../mocks.dart';
 import 'add_sight_screen.dart';
 
@@ -16,6 +18,8 @@ class SightListScreen extends StatefulWidget {
 }
 
 class _SightListScreenState extends State<SightListScreen> {
+  _SightListScreenState();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -158,12 +162,23 @@ class _SightListScreenState extends State<SightListScreen> {
                                     child: SightCard(sight),
                                   ),
                                   onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            SightDetails(sight),
+                                    showModalBottomSheet(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
+                                          8.0,
+                                        ),
                                       ),
+                                      isScrollControlled: true,
+                                      context: context,
+                                      builder: (context) {
+                                        return Container(
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.8,
+                                          child: DetailsBottomSheet(sight),
+                                        );
+                                      },
                                     );
                                   },
                                 ),
