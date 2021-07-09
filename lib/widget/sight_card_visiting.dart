@@ -2,11 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places/domain/sight.dart';
-import 'package:places/ui/res/colors.dart';
 import 'package:places/ui/res/images.dart';
-import 'package:places/ui/res/text_style.dart';
 
-import '../mocks.dart';
 
 class SightCardVisiting extends StatelessWidget {
   final Sight sight;
@@ -56,7 +53,14 @@ class SightCardVisiting extends StatelessWidget {
                           color: Colors.transparent,
                           child: InkWell(
                             onTap: () {
-                              print('Button pressed');
+                              showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate:
+                                    DateTime.now().subtract(Duration(days: 30)),
+                                lastDate:
+                                    DateTime.now().add(Duration(days: 30)),
+                              );
                             },
                             child: SvgPicture.asset(Images.icCalendar),
                           ),
