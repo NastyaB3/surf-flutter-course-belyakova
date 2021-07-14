@@ -1,15 +1,23 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/res/images.dart';
 
-
-class SightCardVisiting extends StatelessWidget {
+class SightCardVisiting extends StatefulWidget {
   final Sight sight;
   final Function onClose;
 
   SightCardVisiting(this.sight, {Key key, this.onClose}) : super(key: key);
+
+  @override
+  _SightCardVisitingState createState() => _SightCardVisitingState();
+}
+
+class _SightCardVisitingState extends State<SightCardVisiting> {
+  DateTime _date;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +35,7 @@ class SightCardVisiting extends StatelessWidget {
                     topRight: Radius.circular(16),
                   ),
                   child: Image.network(
-                    sight.photo,
+                    widget.sight.photo,
                     fit: BoxFit.cover,
                     loadingBuilder: (context, child, loadingProgress) {
                       if (loadingProgress == null) return child;
@@ -53,14 +61,32 @@ class SightCardVisiting extends StatelessWidget {
                           color: Colors.transparent,
                           child: InkWell(
                             onTap: () {
-                              showDatePicker(
-                                context: context,
-                                initialDate: DateTime.now(),
-                                firstDate:
-                                    DateTime.now().subtract(Duration(days: 30)),
-                                lastDate:
-                                    DateTime.now().add(Duration(days: 30)),
-                              );
+                              if (Platform.isAndroid) {
+                                showDatePicker(
+                                  context: context,
+                                  initialDate: DateTime.now(),
+                                  firstDate: DateTime.now()
+                                      .subtract(Duration(days: 30)),
+                                  lastDate:
+                                      DateTime.now().add(Duration(days: 30)),
+                                );
+                              } else {
+                                showCupertinoModalPopup(
+                                    context: context,
+                                    builder: (_) {
+                                      return Container(
+                                       color: Colors.white,
+                                        height: 250,
+                                        child: CupertinoDatePicker(
+                                          onDateTimeChanged: (selected) {
+                                            setState(() {
+                                              _date = selected;
+                                            });
+                                          },
+                                        ),
+                                      );
+                                    });
+                              }
                             },
                             child: SvgPicture.asset(Images.icCalendar),
                           ),
@@ -74,7 +100,7 @@ class SightCardVisiting extends StatelessWidget {
                           color: Colors.transparent,
                           child: InkWell(
                             onTap: () {
-                              onClose(sight);
+                              widget.onClose(widget.sight);
                             },
                             child: SvgPicture.asset(Images.icClose),
                           ),
@@ -90,7 +116,7 @@ class SightCardVisiting extends StatelessWidget {
                 child: Container(
                   margin: EdgeInsets.only(top: 16, left: 16),
                   child: Text(
-                    sight.type.toLowerCase(),
+                    widget.sight.type.toLowerCase(),
                     style: Theme.of(context)
                         .textTheme
                         .bodyText1
@@ -123,7 +149,7 @@ class SightCardVisiting extends StatelessWidget {
                     left: 16,
                   ),
                   child: Text(
-                    sight.name,
+                    widget.sight.name,
                     style: Theme.of(context).textTheme.subtitle1,
                   ),
                 ),
