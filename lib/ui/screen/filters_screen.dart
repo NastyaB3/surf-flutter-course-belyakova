@@ -138,9 +138,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
                             fontWeight: FontWeight.w400,
                             color: Theme.of(context).primaryColor)),
                   ),
-                  SizedBox(
-                    width: 132,
-                  ),
+                  Spacer(),
                   Text(
                     'от ${_currentRangeValues.start.round()} до ${_currentRangeValues.end.round()} м ',
                     textAlign: TextAlign.right,
@@ -148,6 +146,9 @@ class _FiltersScreenState extends State<FiltersScreen> {
                         .textTheme
                         .bodyText2
                         .copyWith(fontSize: 16),
+                  ),
+                  SizedBox(
+                    width: 8,
                   ),
                 ],
               ),
