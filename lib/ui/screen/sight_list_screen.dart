@@ -326,7 +326,7 @@ class StickyHeaderDelegate extends SliverPersistentHeaderDelegate {
       );
     }
 
-    if (shrinkOffset < 33) {
+    if (shrinkOffset < 33 && MediaQuery.of(context).orientation == Orientation.portrait) {
       return Container(
         color: Theme.of(context).backgroundColor,
         padding: EdgeInsets.only(
@@ -345,16 +345,13 @@ class StickyHeaderDelegate extends SliverPersistentHeaderDelegate {
         ),
       );
     }
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Container(
-        color: Theme.of(context).backgroundColor,
-        padding: EdgeInsets.only(top: topPadding),
-        child: Center(
-          child: Text(
-            'Список интересных мест',
-            style: Theme.of(context).textTheme.headline6,
-          ),
+    return Container(
+      color: Theme.of(context).backgroundColor,
+      padding: EdgeInsets.only(top: topPadding),
+      child: Center(
+        child: Text(
+          'Список интересных мест',
+          style: Theme.of(context).textTheme.headline6,
         ),
       ),
     );
