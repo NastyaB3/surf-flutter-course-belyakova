@@ -312,7 +312,42 @@ class StickyHeaderDelegate extends SliverPersistentHeaderDelegate {
 
     if (shrinkOffset > 33 &&
         MediaQuery.of(context).orientation == Orientation.portrait) {
+      return SingleChildScrollView(
+        child: Container(
+          color: Theme.of(context).backgroundColor,
+          padding: EdgeInsets.only(top: topPadding),
+          child: Center(
+            child: Text(
+              'Список интересных мест',
+              style: Theme.of(context).textTheme.headline6,
+            ),
+          ),
+        ),
+      );
+    }
+
+    if (shrinkOffset < 33) {
       return Container(
+        color: Theme.of(context).backgroundColor,
+        padding: EdgeInsets.only(
+            left: 16, top: MediaQuery.of(context).padding.top),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Список \nинтересных мест',
+              style: Theme.of(context).textTheme.headline4.copyWith(
+                    fontSize: Theme.of(context).textTheme.headline6.fontSize +
+                        calculatedSize,
+                  ),
+            ),
+          ],
+        ),
+      );
+    }
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Container(
         color: Theme.of(context).backgroundColor,
         padding: EdgeInsets.only(top: topPadding),
         child: Center(
@@ -320,40 +355,6 @@ class StickyHeaderDelegate extends SliverPersistentHeaderDelegate {
             'Список интересных мест',
             style: Theme.of(context).textTheme.headline6,
           ),
-        ),
-      );
-    }
-
-    if (shrinkOffset < 33 &&
-        MediaQuery.of(context).orientation == Orientation.portrait) {
-      return SingleChildScrollView(
-        scrollDirection:
-            MediaQuery.of(context).orientation == Orientation.landscape
-                ? Axis.horizontal
-                : Axis.vertical,
-        child: Container(
-          color: Theme.of(context).backgroundColor,
-          padding: EdgeInsets.only(
-              left: 16, top: MediaQuery.of(context).padding.top),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Список \nинтересных мест',
-                  style: Theme.of(context).textTheme.headline4.copyWith(
-                      fontSize: Theme.of(context).textTheme.headline6.fontSize +
-                          calculatedSize)),
-            ],
-          ),
-        ),
-      );
-    }
-    return Container(
-      color: Theme.of(context).backgroundColor,
-      padding: EdgeInsets.only(top: topPadding),
-      child: Center(
-        child: Text(
-          'Список интересных мест',
-          style: Theme.of(context).textTheme.headline6,
         ),
       ),
     );
