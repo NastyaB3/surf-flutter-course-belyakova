@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:places/domain/sight.dart';
 import 'package:places/ui/res/colors.dart';
 import 'package:places/ui/res/images.dart';
 import 'package:places/ui/screen/filters_screen.dart';
 import 'package:places/ui/screen/sight_card.dart';
-import 'package:places/ui/screen/sight_details.dart';
 import 'package:places/ui/screen/sight_search_screen.dart';
 import 'package:places/widget/details_bottomSheet.dart';
 import '../../mocks.dart';
@@ -28,7 +26,8 @@ class _SightListScreenState extends State<SightListScreen> {
           CustomScrollView(slivers: [
             SliverPersistentHeader(
               delegate: StickyHeaderDelegate(
-                  topPadding: MediaQuery.of(context).padding.top),
+                topPadding: MediaQuery.of(context).padding.top,
+              ),
               pinned: true,
             ),
             SliverList(
@@ -42,7 +41,10 @@ class _SightListScreenState extends State<SightListScreen> {
                       children: [
                         Container(
                             color: Colors.white,
-                            padding: EdgeInsets.only(right: 16, left: 16),
+                            padding: MediaQuery.of(context).orientation ==
+                                    Orientation.portrait
+                                ? EdgeInsets.only(right: 16, left: 16)
+                                : EdgeInsets.only(right: 34, left: 34),
                             child: ConstrainedBox(
                               constraints: BoxConstraints.tightFor(height: 40),
                               child: Container(
@@ -146,44 +148,85 @@ class _SightListScreenState extends State<SightListScreen> {
                                 ),
                               ),
                             )),
-                        ListView.builder(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            itemCount: mocks.length,
-                            itemBuilder: (context, index) {
-                              final sight = mocks[index];
-                              return Container(
-                                margin: EdgeInsets.symmetric(
-                                    vertical: 8, horizontal: 16),
-                                child: InkWell(
-                                  borderRadius: BorderRadius.circular(16),
-                                  child: AspectRatio(
-                                    aspectRatio: 3 / 2,
-                                    child: SightCard(sight),
-                                  ),
-                                  onTap: () {
-                                    showModalBottomSheet(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(
-                                          8.0,
-                                        ),
+                        MediaQuery.of(context).orientation ==
+                                Orientation.portrait
+                            ? ListView.builder(
+                                shrinkWrap: true,
+                                physics: NeverScrollableScrollPhysics(),
+                                itemCount: mocks.length,
+                                itemBuilder: (context, index) {
+                                  final sight = mocks[index];
+                                  return Container(
+                                    margin: EdgeInsets.symmetric(
+                                        vertical: 8, horizontal: 16),
+                                    child: InkWell(
+                                      borderRadius: BorderRadius.circular(16),
+                                      child: AspectRatio(
+                                        aspectRatio: 3 / 2,
+                                        child: SightCard(sight),
                                       ),
-                                      isScrollControlled: true,
-                                      context: context,
-                                      builder: (context) {
-                                        return Container(
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.8,
-                                          child: DetailsBottomSheet(sight),
+                                      onTap: () {
+                                        showModalBottomSheet(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(
+                                              8.0,
+                                            ),
+                                          ),
+                                          isScrollControlled: true,
+                                          context: context,
+                                          builder: (context) {
+                                            return Container(
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.8,
+                                              child: DetailsBottomSheet(sight),
+                                            );
+                                          },
                                         );
                                       },
-                                    );
-                                  },
-                                ),
-                              );
-                            }),
+                                    ),
+                                  );
+                                })
+                            : GridView.builder(
+                                physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: mocks.length,
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                        childAspectRatio: 3 / 2,
+                                        crossAxisCount: 2),
+                                itemBuilder: (context, index) {
+                                  final sight = mocks[index];
+                                  return Container(
+                                    margin: EdgeInsets.symmetric(
+                                        vertical: 8, horizontal: 16),
+                                    child: InkWell(
+                                      borderRadius: BorderRadius.circular(16),
+                                      child: SightCard(sight),
+                                      onTap: () {
+                                        showModalBottomSheet(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(
+                                              8.0,
+                                            ),
+                                          ),
+                                          isScrollControlled: true,
+                                          context: context,
+                                          builder: (context) {
+                                            return Container(
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.8,
+                                              child: DetailsBottomSheet(sight),
+                                            );
+                                          },
+                                        );
+                                      },
+                                    ),
+                                  );
+                                }),
                       ],
                     ),
                   ),
@@ -267,7 +310,8 @@ class StickyHeaderDelegate extends SliverPersistentHeaderDelegate {
         Theme.of(context).textTheme.headline6.fontSize;
     final double calculatedSize = percentOffset * sizeDelta / 100;
 
-    if (shrinkOffset > 33) {
+    if (shrinkOffset > 33 &&
+        MediaQuery.of(context).orientation == Orientation.portrait) {
       return Container(
         color: Theme.of(context).backgroundColor,
         padding: EdgeInsets.only(top: topPadding),
@@ -279,21 +323,37 @@ class StickyHeaderDelegate extends SliverPersistentHeaderDelegate {
         ),
       );
     }
-    return SingleChildScrollView(
-      child: Container(
-        color: Theme.of(context).backgroundColor,
-        padding:
-            EdgeInsets.only(left: 16, top: MediaQuery.of(context).padding.top),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Список \nинтересных мест',
-              style: Theme.of(context).textTheme.headline4.copyWith(
-                  fontSize: Theme.of(context).textTheme.headline6.fontSize +
-                      calculatedSize),
-            ),
-          ],
+
+    if (shrinkOffset < 33 &&
+        MediaQuery.of(context).orientation == Orientation.portrait) {
+      return SingleChildScrollView(
+        scrollDirection:
+            MediaQuery.of(context).orientation == Orientation.landscape
+                ? Axis.horizontal
+                : Axis.vertical,
+        child: Container(
+          color: Theme.of(context).backgroundColor,
+          padding: EdgeInsets.only(
+              left: 16, top: MediaQuery.of(context).padding.top),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Список \nинтересных мест',
+                  style: Theme.of(context).textTheme.headline4.copyWith(
+                      fontSize: Theme.of(context).textTheme.headline6.fontSize +
+                          calculatedSize)),
+            ],
+          ),
+        ),
+      );
+    }
+    return Container(
+      color: Theme.of(context).backgroundColor,
+      padding: EdgeInsets.only(top: topPadding),
+      child: Center(
+        child: Text(
+          'Список интересных мест',
+          style: Theme.of(context).textTheme.headline6,
         ),
       ),
     );
