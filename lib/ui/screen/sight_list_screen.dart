@@ -43,8 +43,8 @@ class _SightListScreenState extends State<SightListScreen> {
                             color: Colors.white,
                             padding: MediaQuery.of(context).orientation ==
                                     Orientation.portrait
-                                ? EdgeInsets.only(right: 16, left: 16)
-                                : EdgeInsets.only(right: 34, left: 34),
+                                ? EdgeInsets.symmetric(horizontal: 16)
+                                : EdgeInsets.symmetric(horizontal: 34),
                             child: ConstrainedBox(
                               constraints: BoxConstraints.tightFor(height: 40),
                               child: Container(
