@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:places/dio_data.dart';
 import 'package:places/ui/res/images.dart';
 import 'package:places/ui/screen/res/themes.dart';
 import 'package:places/ui/screen/settings_screen.dart';
@@ -39,13 +38,7 @@ class _AppState extends State<MainApp> {
         isDarkMode = themeChanger.isDarkMode;
       });
     });
-    testNetworkCall();
     super.initState();
-  }
-
-  void testNetworkCall() async {
-    final response = await getPlaces();
-    print(response);
   }
 
   @override

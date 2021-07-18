@@ -6,14 +6,7 @@ BaseOptions baseOptions = BaseOptions(
   connectTimeout: 5000,
   receiveTimeout: 5000,
   sendTimeout: 5000,
-  baseUrl: 'https://jsonplaceholder.typicode.com',
+  baseUrl: 'https://test-backend-flutter.surfstudio.ru',
   responseType: ResponseType.json,
 );
 
-Future<String> getPlaces() async {
-  final response = await dio.get('/users');
-  if (response.statusCode == 200) {
-    return response.data.toString();
-  }
-  throw Exception("Error code : ${response.statusCode}");
-}
